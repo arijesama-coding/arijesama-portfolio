@@ -1,0 +1,18 @@
+<section id="services" class="section-pad bg-b">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow" data-reveal>Services</div>
+      <h2 data-reveal>What I can build for you.</h2>
+    </div>
+    <div class="services-list" id="services-list">
+      @for (s of items; track s.title; let i = $index) {
+        <div class="service-row">
+          <span class="s-num">0{{ i + 1 }}</span>
+          <h4>{{ s.title }}</h4>
+          <p>{{ s.desc }}</p>
+          <div class="s-arrow"><i data-lucide="arrow-up-right"></i></div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

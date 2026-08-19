@@ -1,0 +1,13 @@
+<section id="stats">
+  <div class="container">
+    <div class="stats-grid" id="stats-grid">
+      @for (s of items; track s.label) {
+        <div class="stat-cell">
+          <div class="stat-num" [attr.data-target]="s.num"><span class="cy">0</span></div>
+          <div class="stat-line"></div>
+          <div class="stat-label">{{ s.label }}</div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

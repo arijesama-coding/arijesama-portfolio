@@ -1,0 +1,17 @@
+<section id="why" class="section-pad bg-a">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow" data-reveal>Why Work With Me</div>
+      <h2 data-reveal>Four principles behind every project.</h2>
+    </div>
+    <div class="why-grid" id="why-grid">
+      @for (w of items; track w.num) {
+        <div class="why-card">
+          <div class="why-num">{{ w.num }}</div>
+          <h4>{{ w.title }}</h4>
+          <p>{{ w.desc }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

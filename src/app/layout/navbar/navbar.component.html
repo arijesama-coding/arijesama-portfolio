@@ -1,0 +1,38 @@
+<header id="navbar">
+  <div class="container nav-inner">
+    <a href="#hero" class="nav-logo" (click)="closeMenu()">
+      <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.65 26.73"><polygon points="9.47 10.26 12.93 10.26 16.74 3.06 15.11 0 9.47 10.26"/><polygon points="13.39 2.92 18.76 13.93 21 10.26 15.22 0 13.39 2.92"/><polygon points="1.72 12.12 14.63 12.12 20.89 23.26 24.08 23.26 20 15.99 24.08 8.31 27.95 8.31 23.74 15.79 29.65 26.73 18.85 26.73 12.46 15.34 3.96 15.34 1.72 12.12"/><polygon points="5.37 17.25 9.11 17.25 5.84 23.11 9.11 23.11 12.17 18.15 14.09 21.82 11.42 26.45 0 26.45 5.37 17.25"/></svg>
+      <span class="mark-text">
+        <span class="mark">ARIJESAMA.DEV</span>
+        <span class="sub">AI & SOFTWARE SOLUTIONS ENGINEER</span>
+      </span>
+    </a>
+    <nav class="nav-links">
+      <a href="#hero">Home</a>
+      <a href="#about">About</a>
+      <a href="#stack">Stack</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-ghost">Let's Talk</a>
+      <button class="hamburger" id="hamburger"
+              [class.active]="menuOpen"
+              [attr.aria-expanded]="menuOpen"
+              aria-label="Open menu"
+              (click)="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav id="mobile-menu" [class.open]="menuOpen" [attr.aria-hidden]="!menuOpen">
+  <a href="#hero" (click)="closeMenu()">Home</a>
+  <a href="#about" (click)="closeMenu()">About</a>
+  <a href="#stack" (click)="closeMenu()">Stack</a>
+  <a href="#projects" (click)="closeMenu()">Projects</a>
+  <a href="#experience" (click)="closeMenu()">Experience</a>
+  <a href="#contact" (click)="closeMenu()">Contact</a>
+</nav>

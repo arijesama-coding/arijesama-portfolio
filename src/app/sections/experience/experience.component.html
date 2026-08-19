@@ -1,0 +1,27 @@
+<section id="experience" class="section-pad bg-a">
+  <div class="container">
+    <div class="section-head" style="margin-left:auto;margin-right:auto;text-align:center;">
+      <div class="eyebrow" style="justify-content:center;" data-reveal>Engineering Experience</div>
+      <h2 data-reveal>A timeline of building things that scale.</h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-line"><div class="timeline-line-fill" id="timeline-fill"></div></div>
+      <div id="timeline-items">
+        @for (e of items; track e.period) {
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="period">{{ e.period }}</div>
+            <h4>{{ e.role }}</h4>
+            <div class="company">{{ e.company }}</div>
+            <p>{{ e.desc }}</p>
+            <div class="p-tech">
+              @for (t of e.tech; track t) {
+                <span>{{ t }}</span>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

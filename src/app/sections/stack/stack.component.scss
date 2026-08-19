@@ -1,0 +1,123 @@
+/* styles inherited from global styles.scss */
+
+/* ---------------------------------------------------------------
+   Interactive layer for the Tech Stack cards.
+   Only adds hover/active behavior — base card look (size, spacing,
+   colors at rest) stays exactly as defined globally.
+   Override --stack-info-bg / --stack-info-border from a parent
+   scope if you want the popover to match your theme's card surface
+   more precisely.
+   --------------------------------------------------------------- */
+
+.stack-card {
+  position: relative;
+  cursor: pointer;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+
+  .icon-wrap {
+    transition:
+      color 0.35s ease,
+      filter 0.35s ease,
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .name {
+    transition: color 0.3s ease;
+  }
+
+  // Other cards fade back slightly while one is active
+  &.is-dimmed {
+    opacity: 0.55;
+  }
+
+  // The active technology becomes the visually dominant element
+  &.is-active {
+    border-color: var(--tech-color, currentColor);
+    box-shadow: 0 0 0 1px var(--tech-color, transparent),
+    0 16px 36px -16px var(--tech-color, transparent);
+    transform: translateY(-3px);
+    z-index: 3;
+
+    .icon-wrap {
+      color: var(--tech-color);
+      filter: drop-shadow(0 0 6px var(--tech-color)) brightness(1.15);
+      transform: scale(1.08);
+    }
+
+    .name {
+      color: var(--tech-color);
+    }
+  }
+}
+
+/* Role-points popover — floats over the grid so it never reflows
+   the layout of surrounding cards. */
+.stack-info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 10px);
+  z-index: 6;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  background: var(--stack-info-bg, rgba(12, 14, 20, 0.92));
+  border: 1px solid var(--stack-info-border, rgba(255, 255, 255, 0.08));
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  animation: stack-info-in 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  li {
+    position: relative;
+    padding-left: 0.85rem;
+    font-size: 0.78rem;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.82);
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--tech-color, currentColor);
+    }
+  }
+}
+
+@keyframes stack-info-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stack-card,
+  .stack-card .icon-wrap,
+  .stack-card .name,
+  .stack-info {
+    transition: none;
+    animation: none;
+  }
+}
