@@ -1,1 +1,604 @@
 /* styles inherited from global styles.scss */
+
+/* ---------------------------------------------------------------
+   Sticky, scroll-scaled project stack (same technique as the
+   Framer Motion reference): each card sits in its own
+   `position: sticky` wrapper with an increasing top offset, so cards
+   naturally stack as you scroll past them — no manual pin/timeline.
+   GSAP (projects.component.ts) only handles the subtle scale-down on
+   each card as it's about to be covered by the next one.
+   --------------------------------------------------------------- */
+
+.projects-stack {
+  position: relative;
+  max-width: 1180px; // narrower than full-bleed on desktop, per request
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+}
+
+.project-sticky {
+  position: sticky;
+  // top offset is set inline per-card via stickyTop() in the component
+}
+
+.project-card {
+  --card-bg: #0c0c0c;
+  --card-fg: #d7e2ea;
+  --card-border: rgba(215, 226, 234, 0.5);
+  --card-gap-below: 2rem; // breathing room below the card, before the next sticky offset
+
+  position: relative;
+  // Card height = whatever's left of the viewport below its own sticky
+  // offset, so it's always fully visible with no extra vertical scroll.
+  // svh (small viewport height) avoids mobile browsers' address-bar
+  // resize jitter; browsers that don't support it just keep the vh value.
+  height: calc(100vh - var(--sticky-top, 5.5rem) - var(--card-gap-below));
+  height: calc(100svh - var(--sticky-top, 5.5rem) - var(--card-gap-below));
+  max-height: calc(100vh - var(--sticky-top, 5.5rem) - var(--card-gap-below));
+  max-height: calc(100svh - var(--sticky-top, 5.5rem) - var(--card-gap-below));
+  margin-bottom: 2rem;
+  padding: clamp(1.25rem, 2.5vw, 2.25rem);
+  border-radius: 5px;
+  background: var(--card-bg);
+  color: var(--card-fg);
+  border: 2px solid var(--card-border);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.75rem, 1.5vh, 1.25rem);
+  overflow-y: auto;     // au lieu de overflow: hidden
+  overflow-x: hidden;   // évite une scrollbar horizontale, garde le clip des coins arrondis
+  -webkit-overflow-scrolling: touch; // scroll interne fluide sur iOS
+  overscroll-behavior-y: auto; // (valeur par défaut) laisse le scroll "remonter" à la page une fois la card entièrement parcourue
+  transform-origin: top center;
+  will-change: transform;
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.55);
+}
+
+.p-top {
+  flex-shrink: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.p-top-left {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.p-num {
+  font-weight: 900;
+  line-height: 0.9;
+  color: var(--card-fg);
+  font-size: clamp(2.5rem, 7vw, 6rem);
+}
+
+.p-top-meta {
+  padding-top: 0.4rem;
+}
+
+.p-cat {
+  margin: 0 0 0.25rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  font-weight: 300;
+}
+
+.p-title {
+  margin: 0;
+  font-size: clamp(1.1rem, 2.4vw, 2rem);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.p-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--card-border);
+  color: var(--card-fg);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.3s ease, color 0.3s ease;
+
+  i {
+    width: 15px;
+    height: 15px;
+  }
+
+  &:hover {
+    background: var(--card-fg);
+    color: var(--card-bg);
+  }
+}
+
+.p-desc {
+  flex-shrink: 0;
+  margin: 0;
+  max-width: 60ch;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  opacity: 0.8;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.p-image-grid {
+  display: flex;
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  flex: 1 1 auto;
+  min-height: 0; // required for a flex child to actually shrink instead of overflowing
+}
+
+.p-col {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  min-height: 0; // required for a flex child to actually shrink instead of overflowing
+}
+
+.p-col-left {
+  width: 40%;
+}
+
+.p-col-right {
+  width: 60%;
+  display: flex;
+  min-height: 0;
+}
+
+.p-img {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: clamp(18px, 3vw, 40px);
+}
+
+.p-img-top {
+  flex: 0 1 clamp(80px, 14vw, 200px);
+  height: clamp(80px, 14vw, 200px);
+  min-height: 0;
+}
+
+.p-img-bottom {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.p-col-right .p-img-full {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+.p-image-single {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: clamp(18px, 3vw, 40px);
+
+  .p-img-full {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* Zone image cliquable → ouvre la galerie */
+.p-image-clickable {
+  position: relative;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  color: inherit;
+  width: 100%;
+  border-radius: clamp(18px, 3vw, 40px);
+  overflow: hidden;
+
+  &:focus-visible {
+    outline: 2px solid var(--card-fg);
+    outline-offset: 3px;
+  }
+}
+
+.p-image-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(
+    180deg,
+    rgba(12, 12, 12, 0) 35%,
+    rgba(12, 12, 12, 0.75) 100%
+  );
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+  border-radius: inherit;
+
+  span {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    i {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+.p-image-clickable:hover .p-image-overlay,
+.p-image-clickable:focus-visible .p-image-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.p-footer {
+  flex-shrink: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(215, 226, 234, 0.15);
+}
+
+.p-role {
+  max-width: 42ch;
+
+  &-label {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-bottom: 0.5rem;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    // Safety net for an unusually long role list on a short viewport —
+    // scrolls internally rather than pushing the card past 100vh.
+    max-height: 18vh;
+    overflow-y: auto;
+  }
+
+  li {
+    position: relative;
+    padding-left: 0.85rem;
+    font-size: 0.8rem;
+    opacity: 0.85;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5em;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.7;
+    }
+  }
+}
+
+.p-meta-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.p-year {
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+.p-tech {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.4rem;
+
+  span {
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+    border: 1px solid rgba(215, 226, 234, 0.3);
+    font-size: 0.72rem;
+    opacity: 0.85;
+  }
+}
+
+/* ---------------- Mobile ---------------- */
+@media (max-width: 767px) {
+  .projects-stack {
+    padding: 0 1rem 3rem;
+  }
+
+  .project-card {
+    padding: 1.25rem;
+    gap: 0.85rem;
+  }
+
+  .p-image-grid {
+    flex-direction: column;
+  }
+
+  .p-col-left,
+  .p-col-right {
+    width: 100%;
+    flex: 1 1 0;
+    flex-direction: row;
+    min-height: 0;
+  }
+
+  .p-img-top,
+  .p-img-bottom {
+    flex: 1 1 0;
+    height: auto;
+    min-height: 0;
+  }
+
+  .p-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .p-meta-right {
+    align-items: flex-start;
+  }
+
+  .p-tech {
+    justify-content: flex-start;
+  }
+}
+
+/* position: sticky needs every ancestor up to the scroll container to
+   allow overflow — this section/its wrappers must not set
+   `overflow: hidden` for the stack effect to work. */
+@media (prefers-reduced-motion: reduce) {
+  .project-sticky {
+    position: static;
+  }
+
+  .project-card {
+    transform: none !important;
+  }
+}
+
+/* ============================================================
+   Galerie / carrousel d’images (modale)
+   ============================================================ */
+.project-gallery-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(8, 11, 20, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  animation: gallery-fade 0.25s ease-out;
+
+  @media (max-width: 767px) {
+    padding: 0;
+  }
+}
+
+.project-gallery {
+  position: relative;
+  width: min(920px, 100%);
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  background: #0c0c0c;
+  border: 1px solid rgba(215, 226, 234, 0.25);
+  overflow: hidden;
+  animation: gallery-in 0.35s ease-out;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    border-radius: 0;
+  }
+}
+
+.project-gallery__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 5;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: none;
+  background: rgba(15, 23, 42, 0.6);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease;
+
+  i {
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover {
+    background: rgba(215, 226, 234, 0.25);
+  }
+}
+
+.project-gallery__carousel {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  touch-action: pan-y;
+  background: #111;
+
+  @media (max-width: 767px) {
+    aspect-ratio: auto;
+    flex: 1;
+    min-height: 0;
+  }
+}
+
+.project-gallery__track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.4s ease-out;
+}
+
+.project-gallery__slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+}
+
+.gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: none;
+  background: rgba(15, 23, 42, 0.55);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease;
+
+  i {
+    width: 22px;
+    height: 22px;
+  }
+
+  &:hover {
+    background: rgba(215, 226, 234, 0.3);
+  }
+
+  &--prev {
+    left: 14px;
+  }
+
+  &--next {
+    right: 14px;
+  }
+
+  @media (max-width: 767px) {
+    width: 36px;
+    height: 36px;
+
+    i {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+
+.gallery-dots {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+
+    &.is-active {
+      background: #fff;
+      transform: scale(1.3);
+    }
+  }
+}
+
+.project-gallery__caption {
+  flex-shrink: 0;
+  padding: 16px 24px 20px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid rgba(215, 226, 234, 0.12);
+
+  h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #d7e2ea;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.85rem;
+    opacity: 0.6;
+    color: #d7e2ea;
+  }
+}
+
+@keyframes gallery-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes gallery-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

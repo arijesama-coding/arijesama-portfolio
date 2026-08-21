@@ -1,26 +1,152 @@
-<section id="projects" class="section-pad bg-b">
+<section id="projects" class="section-pad bg-b projects-section">
   <div class="container">
     <div class="section-head">
       <div class="eyebrow" data-reveal>Selected Work</div>
       <h2 data-reveal>A showroom of systems I've engineered.</h2>
     </div>
-    <div class="projects-grid" id="projects-grid">
-      @for (p of items; track p.num) {
-        <article class="project-card">
+  </div>
+
+  <div class="projects-stack">
+    @for (p of items; track p.num; let i = $index) {
+      <div class="project-sticky" #stickyWrap [style.top]="stickyTop(i)" [style.--sticky-top]="stickyTop(i)">
+        <article class="project-card" #card>
           <div class="p-top">
-            <span class="p-num">{{ p.num }}</span>
-            <span class="p-cat">{{ p.cat }}</span>
+            <div class="p-top-left">
+              <span class="p-num">{{ p.num }}</span>
+              <div class="p-top-meta">
+                <p class="p-cat">{{ p.cat }}</p>
+                <h3 class="p-title">{{ p.title }}</h3>
+              </div>
+            </div>
+            <a [href]="p.link || '#contact'" class="p-cta">
+              {{ p.cta || 'View Project' }}
+              <i data-lucide="arrow-up-right"></i>
+            </a>
           </div>
-          <h4>{{ p.title }}</h4>
-          <p>{{ p.desc }}</p>
-          <div class="p-tech">
-            @for (t of p.tech; track t) {
-              <span>{{ t }}</span>
+
+          <p class="p-desc">{{ p.desc }}</p>
+
+          <!-- Première image affichée par défaut sur la card -->
+          @if (hasImages(p)) {
+            <button
+              type="button"
+              class="p-image-single p-image-clickable"
+              (click)="openGallery(p, $event)"
+              [attr.aria-label]="'View gallery for ' + p.title"
+            >
+              <img
+                [src]="p.images[0]"
+                [alt]="p.title"
+                loading="lazy"
+                class="p-img p-img-full"
+              />
+              <div class="p-image-overlay">
+                <span>
+                  <i data-lucide="images"></i>
+                  View gallery
+                </span>
+              </div>
+            </button>
+          }
+
+          <div class="p-footer">
+            @if (p.role.length) {
+              <div class="p-role">
+                <span class="p-role-label">My Role</span>
+                <ul>
+                  @for (r of p.role; track r) {
+                    <li>{{ r }}</li>
+                  }
+                </ul>
+              </div>
             }
+
+            <div class="p-meta-right">
+              @if (p.year) {
+                <span class="p-year">{{ p.year }}</span>
+              }
+              <div class="p-tech">
+                @for (t of p.tech; track t) {
+                  <span>{{ t }}</span>
+                }
+              </div>
+            </div>
           </div>
-          <a href="#contact" class="p-link">View Project <i data-lucide="arrow-up-right"></i></a>
         </article>
-      }
-    </div>
+      </div>
+    }
   </div>
 </section>
+
+<!-- Galerie / carrousel d’images du projet -->
+@if (selectedProject(); as project) {
+  <div class="project-gallery-backdrop" (click)="closeGallery()">
+    <div
+      class="project-gallery"
+      (click)="$event.stopPropagation()"
+      (touchstart)="onTouchStart($event)"
+      (touchmove)="onTouchMove($event)"
+      (touchend)="onTouchEnd()"
+    >
+      <button
+        type="button"
+        class="project-gallery__close"
+        (click)="closeGallery()"
+        aria-label="Close gallery"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="project-gallery__carousel">
+        @if (getProjectImages(project); as images) {
+          <div
+            class="project-gallery__track"
+            [style.transform]="'translateX(-' + (activeImageIndex() * 100) + '%)'"
+          >
+            @for (img of images; track img) {
+              <div class="project-gallery__slide">
+                <img [src]="img" [alt]="project.title" />
+              </div>
+            }
+          </div>
+
+          @if (images.length > 1) {
+            <button
+              type="button"
+              class="gallery-arrow gallery-arrow--prev"
+              (click)="prevImage()"
+              aria-label="Previous image"
+            >
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <button
+              type="button"
+              class="gallery-arrow gallery-arrow--next"
+              (click)="nextImage()"
+              aria-label="Next image"
+            >
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <div class="gallery-dots">
+              @for (img of images; track img; let di = $index) {
+                <button
+                  type="button"
+                  class="gallery-dots__dot"
+                  [class.is-active]="di === activeImageIndex()"
+                  (click)="goToImage(di)"
+                  [attr.aria-label]="'Go to image ' + (di + 1)"
+                ></button>
+              }
+            </div>
+          }
+        }
+      </div>
+
+      <div class="project-gallery__caption">
+        <h3>{{ project.title }}</h3>
+        <p>{{ activeImageIndex() + 1 }} / {{ getProjectImages(project).length }}</p>
+      </div>
+    </div>
+  </div>
+}
