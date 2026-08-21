@@ -10,6 +10,11 @@ export interface ProjectItem {
   title: string;
   desc: string;
   tech: string[];
+  images: string[];
+  role: string[];
+  year: string;
+  cta: string;
+  link: string;
 }
 
 export interface ExperienceItem {

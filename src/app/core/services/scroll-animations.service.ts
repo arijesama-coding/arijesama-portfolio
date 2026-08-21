@@ -11,6 +11,7 @@ export class ScrollAnimationsService implements OnDestroy {
   private isMobile = false;
   private isTouch = false;
   private magneticCleanup: (() => void)[] = [];
+  private revealObserver?: IntersectionObserver;
 
   constructor(
     private ngZone: NgZone,
@@ -37,6 +38,17 @@ export class ScrollAnimationsService implements OnDestroy {
       this.initWhyCards();
       this.initServiceRows();
       ScrollTrigger.refresh();
+
+      // Trigger positions above are calculated against whatever the layout
+      // looks like right now. If images or webfonts finish loading (and
+      // shift layout) after this point, those positions go stale and
+      // reveals can fire against the wrong scroll offset — which is what
+      // made several sections appear to reveal all at once on refresh.
+      // Refresh again once everything has actually settled.
+      window.addEventListener('load', () => ScrollTrigger.refresh(), { once: true });
+      if (typeof document !== 'undefined' && (document as any).fonts?.ready) {
+        (document as any).fonts.ready.then(() => ScrollTrigger.refresh());
+      }
     });
   }
 
@@ -106,21 +118,43 @@ export class ScrollAnimationsService implements OnDestroy {
   }
 
   private initReveals(): void {
-    document.querySelectorAll('[data-reveal]').forEach((el) => {
-      if (el.closest('#hero')) return;
-      gsap.fromTo(
-        el,
-        { opacity: 0, y: 36, filter: this.prefersReducedMotion ? 'none' : 'blur(6px)' },
-        {
-          opacity: 1,
-          y: 0,
-          filter: 'blur(0px)',
-          duration: 0.9,
-          ease: 'power3.out',
-          scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
-        }
-      );
-    });
+    const elements = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]')).filter(
+      (el) => !el.closest('#hero')
+    );
+    if (!elements.length) return;
+
+    if (this.prefersReducedMotion || typeof IntersectionObserver === 'undefined') {
+      gsap.set(elements, { opacity: 1, y: 0, filter: 'none' });
+      return;
+    }
+
+    // Hide everything up front, synchronously, so nothing can flash fully
+    // visible before the observer has a chance to run.
+    gsap.set(elements, { opacity: 0, y: 36, filter: 'blur(6px)' });
+
+    // IntersectionObserver instead of a ScrollTrigger position calculation:
+    // it re-evaluates against real, current viewport intersection rather
+    // than a pixel offset computed once (and possibly stale). Elements
+    // already on screen at load reveal right away; everything else stays
+    // hidden until it's actually scrolled into view.
+    this.revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          gsap.to(entry.target, {
+            opacity: 1,
+            y: 0,
+            filter: 'blur(0px)',
+            duration: 0.9,
+            ease: 'power3.out'
+          });
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0, rootMargin: '0px 0px -12% 0px' } // roughly matches the old 'top 88%' start line
+    );
+
+    elements.forEach((el) => this.revealObserver!.observe(el));
   }
 
   private initGlobalParallax(): void {
@@ -214,37 +248,16 @@ export class ScrollAnimationsService implements OnDestroy {
   }
 
   private initProjectInteractions(): void {
-    gsap.utils.toArray<HTMLElement>('.project-card').forEach((card) => {
-      gsap.fromTo(
-        card,
-        { opacity: 0, y: 60 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.9,
-          ease: 'power3.out',
-          scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none none' }
-        }
-      );
-      if (!this.prefersReducedMotion && !this.isTouch) {
-        card.addEventListener('mousemove', (e) => {
-          const r = card.getBoundingClientRect();
-          const px = (e.clientX - r.left) / r.width - 0.5;
-          const py = (e.clientY - r.top) / r.height - 0.5;
-          gsap.to(card, {
-            rotateY: px * 4,
-            rotateX: -py * 4,
-            y: -8,
-            scale: 1.01,
-            duration: 0.4,
-            ease: 'power2.out'
-          });
-        });
-        card.addEventListener('mouseleave', () => {
-          gsap.to(card, { rotateY: 0, rotateX: 0, y: 0, scale: 1, duration: 0.6, ease: 'power3.out' });
-        });
-      }
-    });
+    // Intentionally a no-op now. The Projects section runs its own
+    // pinned/scrubbed GSAP ScrollTrigger timeline (see ProjectsComponent)
+    // that fully owns opacity, scale, y and rotate for `.project-card`.
+    // Having this service animate the same properties on the same
+    // elements created two competing GSAP contexts — that fight was a
+    // major source of cards appearing to flash/reveal all at once.
+    // If you want a hover tilt back on top of the cinematic scroll
+    // sequence, add it inside ProjectsComponent instead, scoped to
+    // only rotateY/rotateX so it can't stomp on the pinned timeline's
+    // opacity/scale/y values.
   }
 
   private initExperienceTimeline(): void {
@@ -357,6 +370,7 @@ export class ScrollAnimationsService implements OnDestroy {
 
   ngOnDestroy(): void {
     this.magneticCleanup.forEach((fn) => fn());
+    this.revealObserver?.disconnect();
     ScrollTrigger.getAll().forEach((t) => t.kill());
   }
 }
