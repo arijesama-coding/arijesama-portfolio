@@ -11,7 +11,7 @@
 
 .projects-stack {
   position: relative;
-  max-width: 1180px; // narrower than full-bleed on desktop, per request
+  max-width: 1300px; // narrower than full-bleed on desktop, per request
   margin: 0 auto;
   padding: 0 1.5rem 4rem;
 }
@@ -22,9 +22,10 @@
 }
 
 .project-card {
-  --card-bg: #0c0c0c;
-  --card-fg: #d7e2ea;
-  --card-border: rgba(215, 226, 234, 0.5);
+  /* Theme-aware tokens (values live in styles.scss) */
+  --card-bg: var(--proj-card-bg);
+  --card-fg: var(--proj-card-fg);
+  --card-border: var(--proj-card-border);
   --card-gap-below: 2rem; // breathing room below the card, before the next sticky offset
 
   position: relative;
@@ -51,7 +52,7 @@
   overscroll-behavior-y: auto; // (valeur par défaut) laisse le scroll "remonter" à la page une fois la card entièrement parcourue
   transform-origin: top center;
   will-change: transform;
-  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 30px 60px -30px var(--shadow-card);
 }
 
 .p-top {
@@ -221,11 +222,11 @@
   background:
     repeating-linear-gradient(
       135deg,
-      rgba(215, 226, 234, 0.05) 0 10px,
-      rgba(215, 226, 234, 0.02) 10px 20px
+      var(--proj-stripe-a) 0 10px,
+      var(--proj-stripe-b) 10px 20px
     ),
-    rgba(255, 255, 255, 0.02);
-  border: 1px dashed rgba(215, 226, 234, 0.25);
+    var(--proj-stripe-base);
+  border: 1px dashed var(--proj-stripe-dash);
 }
 
 .p-placeholder-inner {
@@ -273,11 +274,7 @@
   display: flex;
   align-items: flex-end;
   padding: 1rem 1.25rem;
-  background: linear-gradient(
-    180deg,
-    rgba(12, 12, 12, 0) 35%,
-    rgba(12, 12, 12, 0.75) 100%
-  );
+  background: var(--proj-scrim);
   opacity: 0;
   transform: translateY(8px);
   transition: opacity 0.25s ease, transform 0.25s ease;
@@ -287,7 +284,7 @@
   span {
     font-size: 0.85rem;
     font-weight: 600;
-    color: #fff;
+    color: var(--proj-glass-fg);
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
@@ -297,6 +294,17 @@
       height: 16px;
     }
   }
+}
+
+/* Light mode: the label sits on a frosted glass chip so it stays
+   readable over any screenshot, without relying on a heavy scrim. */
+:host-context(html[data-theme='light']) .p-image-overlay span {
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  background: var(--proj-glass-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 14px -6px rgba(15, 22, 26, 0.35);
 }
 
 .p-image-clickable:hover .p-image-overlay,
@@ -313,7 +321,7 @@
   justify-content: space-between;
   gap: 1.25rem;
   padding-top: 0.5rem;
-  border-top: 1px solid rgba(215, 226, 234, 0.15);
+  border-top: 1px solid var(--proj-line);
 }
 
 .p-role {
@@ -382,7 +390,7 @@
   span {
     padding: 0.25rem 0.65rem;
     border-radius: 999px;
-    border: 1px solid rgba(215, 226, 234, 0.3);
+    border: 1px solid var(--proj-chip-border);
     font-size: 0.72rem;
     opacity: 0.85;
   }
@@ -456,7 +464,7 @@
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background: rgba(8, 11, 20, 0.75);
+  background: var(--gallery-backdrop);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   animation: gallery-fade 0.25s ease-out;
@@ -473,9 +481,10 @@
   display: flex;
   flex-direction: column;
   border-radius: 12px;
-  background: #0c0c0c;
-  border: 1px solid rgba(215, 226, 234, 0.25);
+  background: var(--gallery-panel);
+  border: 1px solid var(--gallery-border);
   overflow: hidden;
+  box-shadow: 0 40px 80px -40px var(--shadow-card);
   animation: gallery-in 0.35s ease-out;
 
   @media (max-width: 767px) {
@@ -497,10 +506,10 @@
   place-items: center;
   border-radius: 50%;
   border: none;
-  background: rgba(15, 23, 42, 0.6);
-  color: #fff;
+  background: var(--proj-glass-bg);
+  color: var(--proj-glass-fg);
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease;
 
   i {
     width: 20px;
@@ -508,7 +517,8 @@
   }
 
   &:hover {
-    background: rgba(215, 226, 234, 0.25);
+    background: var(--proj-glass-hover);
+    transform: scale(1.06);
   }
 }
 
@@ -517,7 +527,7 @@
   aspect-ratio: 16 / 10;
   overflow: hidden;
   touch-action: pan-y;
-  background: #111;
+  background: var(--gallery-stage);
 
   @media (max-width: 767px) {
     aspect-ratio: auto;
@@ -558,10 +568,10 @@
   place-items: center;
   border-radius: 50%;
   border: none;
-  background: rgba(15, 23, 42, 0.55);
-  color: #fff;
+  background: var(--proj-glass-bg);
+  color: var(--proj-glass-fg);
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease;
 
   i {
     width: 22px;
@@ -569,7 +579,8 @@
   }
 
   &:hover {
-    background: rgba(215, 226, 234, 0.3);
+    background: var(--proj-glass-hover);
+    transform: translateY(-50%) scale(1.06);
   }
 
   &--prev {
@@ -605,12 +616,13 @@
     padding: 0;
     border-radius: 50%;
     border: none;
-    background: rgba(255, 255, 255, 0.4);
+    background: var(--proj-dot);
+    box-shadow: 0 1px 4px rgba(15, 22, 26, 0.3);
     cursor: pointer;
     transition: background 0.2s ease, transform 0.2s ease;
 
     &.is-active {
-      background: #fff;
+      background: var(--proj-dot-active);
       transform: scale(1.3);
     }
   }
@@ -623,21 +635,21 @@
   align-items: baseline;
   justify-content: space-between;
   gap: 1rem;
-  border-top: 1px solid rgba(215, 226, 234, 0.12);
+  border-top: 1px solid var(--gallery-border);
 
   h3 {
     margin: 0;
     font-size: 1rem;
     font-weight: 600;
     text-transform: uppercase;
-    color: #d7e2ea;
+    color: var(--proj-card-fg);
   }
 
   p {
     margin: 0;
     font-size: 0.85rem;
     opacity: 0.6;
-    color: #d7e2ea;
+    color: var(--proj-card-fg);
   }
 }
 

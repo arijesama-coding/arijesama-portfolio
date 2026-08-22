@@ -1,37 +1,37 @@
 <section id="about" class="section-pad bg-a">
   <div class="container about-grid">
     <div>
-      <div class="eyebrow" data-reveal>About / The Builder</div>
-      <h2 class="about-lead" data-reveal style="margin-top:22px;">Where technology becomes a solution ,   <span class="accent"> not a complication.</span></h2>
-      <p class="about-copy" data-reveal>I build full applications — Java and Spring Boot on the backend, Angular on the frontend, with data that stays reliable and containers that behave the same in staging and production. I care about architecture and the full cycle because shipping is only half the job. The other half is making sure it stays shipped.</p>
+      <div class="eyebrow" data-reveal>{{ i18n.t('about.eyebrow') }}</div>
+      <h2 class="about-lead" data-reveal style="margin-top:22px;">{{ i18n.t('about.lead') }}<span class="accent">{{ i18n.t('about.leadAccent') }}</span></h2>
+      <p class="about-copy" data-reveal>{{ i18n.t('about.copy') }}</p>
     </div>
     <div class="about-tags" data-reveal>
       <div class="tag-row">
         <span class="num">01</span>
         <span class="label">
-          Fullstack by design<br>
-          <small>Java + Spring + Angular</small>
+          {{ i18n.t('about.tag1.label') }}<br>
+          <small>{{ i18n.t('about.tag1.sub') }}</small>
         </span>
       </div>
       <div class="tag-row">
         <span class="num">02</span>
         <span class="label">
-          End-to-end thinking<br>
-          <small>Ticket → Production</small>
+          {{ i18n.t('about.tag2.label') }}<br>
+          <small>{{ i18n.t('about.tag2.sub') }}</small>
         </span>
       </div>
       <div class="tag-row">
         <span class="num">03</span>
         <span class="label">
-          Systems that scale<br>
-          <small>Without drama</small>
+          {{ i18n.t('about.tag3.label') }}<br>
+          <small>{{ i18n.t('about.tag3.sub') }}</small>
         </span>
       </div>
       <div class="tag-row">
         <span class="num">04</span>
         <span class="label">
-          Future me matters<br>
-          <small>Clean code is self-defense</small>
+          {{ i18n.t('about.tag4.label') }}<br>
+          <small>{{ i18n.t('about.tag4.sub') }}</small>
         </span>
       </div>
     </div>

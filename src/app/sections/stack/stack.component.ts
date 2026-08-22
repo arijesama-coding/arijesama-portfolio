@@ -2,6 +2,7 @@ import { Component, HostListener } from '@angular/core';
 import { STACK } from '../../data/stack.data';
 import { StackItem } from '../../shared/models/portfolio.models';
 import { TECH_META, TechMeta, DEFAULT_TECH_META } from '../../data/tech-meta.data';
+import { I18nService } from '../../core/services/i18n.service';
 
 @Component({
   selector: 'app-stack',
@@ -11,6 +12,8 @@ import { TECH_META, TechMeta, DEFAULT_TECH_META } from '../../data/tech-meta.dat
 })
 export class StackComponent {
   items: StackItem[] = STACK;
+
+  constructor(public i18n: I18nService) {}
 
   /** Index of the currently active (hovered/tapped) technology, or null */
   activeIndex: number | null = null;

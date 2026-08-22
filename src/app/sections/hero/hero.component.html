@@ -1,24 +1,29 @@
 <section id="hero">
   <div class="container hero-inner">
     <div class="hero-text">
-      <div class="eyebrow" data-reveal>Fullstack Java / Spring Boot / Angular</div>
+      <div class="eyebrow" data-reveal>{{ i18n.t('hero.eyebrow') }}</div>
       <h1 class="hero-tagline" data-reveal>
 
-        I ship systems that work.<br>
-        Not just features that demo well.
+        {{ i18n.t('hero.tagline1') }}<br>
+        {{ i18n.t('hero.tagline2') }}
       </h1>
       <h1 class="hero-title">
-        <span data-reveal><em>Backend that holds.</em></span>
-        <span data-reveal><em>Frontend that breathes.</em></span>
-        <span data-reveal><em>Deployment that doesn’t panic.</em></span>
+        <span data-reveal><em>{{ i18n.t('hero.title1') }}</em></span>
+        <span data-reveal><em>{{ i18n.t('hero.title2') }}</em></span>
+        <span data-reveal><em>{{ i18n.t('hero.title3') }}</em></span>
       </h1>
 <!--      <p class="hero-desc" data-reveal>-->
 <!--        I design and build complete applications — Java, Spring Boot, Angular, databases, Docker and the boring but necessary parts in between.-->
 <!--        From the first ticket to production monitoring. Because “it works on my machine” is a starting point, not a strategy.-->
 <!--      </p>-->
       <div class="hero-actions" data-reveal>
-        <a href="#projects" class="btn btn-primary">See the work</a>
-        <a href="assets/cv/ARIJESA-Manampiniaina-CV.pdf" class="btn btn-ghost">View Resume</a>
+        <a href="#projects" class="btn btn-primary">{{ i18n.t('hero.work') }}</a>
+        <a
+          [href]="'assets/cv/' + i18n.t('hero.resume.link')"
+          download
+          class="btn btn-ghost">
+          {{ i18n.t('hero.resume') }}
+        </a>
       </div>
     </div>
     <div class="hero-visual">
@@ -26,7 +31,7 @@
     </div>
   </div>
   <div class="scroll-indicator">
-    <span>Scroll. The interesting part is below.</span>
+    <span>{{ i18n.t('hero.scroll') }}</span>
     <div class="line"></div>
   </div>
 </section>

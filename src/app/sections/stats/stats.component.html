@@ -1,11 +1,11 @@
 <section id="stats">
   <div class="container">
     <div class="stats-grid" id="stats-grid">
-      @for (s of items; track s.label) {
+      @for (s of items; track s.num; let i = $index) {
         <div class="stat-cell">
           <div class="stat-num" [attr.data-target]="s.num"><span class="cy">0</span></div>
           <div class="stat-line"></div>
-          <div class="stat-label">{{ s.label }}</div>
+          <div class="stat-label">{{ i18n.pick(s.label) }}</div>
         </div>
       }
     </div>

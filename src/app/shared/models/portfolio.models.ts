@@ -1,17 +1,23 @@
+export type Lang = 'fr' | 'en';
+
+export interface LocalizedText {
+  fr: string;
+  en: string;
+}
+
 export interface StackItem {
   name: string;
-  cat: string;
+  cat: LocalizedText;
   icon: string;
 }
 
 export interface ProjectItem {
   num: string;
-  cat: string;
+  cat: LocalizedText;
   title: string;
-  desc: string;
-  // tech: string[];
+  desc: LocalizedText;
   images: string[];
-  role: string[];
+  role: LocalizedText[];
   year: string;
   cta: string;
   link: string;
@@ -19,21 +25,21 @@ export interface ProjectItem {
 
 export interface ExperienceItem {
   period: string;
-  role: string;
-  company: string;
-  desc: string;
+  role: LocalizedText;
+  company: LocalizedText;
+  desc: LocalizedText;
   tech: string[];
 }
 
 export interface StatItem {
   num: string;
-  label: string;
+  label: LocalizedText;
 }
 
 export interface WhyItem {
   num: string;
-  title: string;
-  desc: string;
+  title: LocalizedText;
+  desc: LocalizedText;
 }
 
 export interface ServiceItem {

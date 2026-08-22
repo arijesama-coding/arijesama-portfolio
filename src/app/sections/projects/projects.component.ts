@@ -12,6 +12,7 @@ import { PROJECTS } from '../../data/projects.data';
 import { ProjectItem } from '../../shared/models/portfolio.models';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { I18nService } from '../../core/services/i18n.service';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,6 +24,8 @@ gsap.registerPlugin(ScrollTrigger);
 })
 export class ProjectsComponent implements AfterViewInit, OnDestroy {
   items: ProjectItem[] = PROJECTS;
+
+  constructor(public i18n: I18nService) {}
 
   @ViewChildren('stickyWrap') stickyRefs!: QueryList<ElementRef<HTMLElement>>;
   @ViewChildren('card') cardRefs!: QueryList<ElementRef<HTMLElement>>;
