@@ -50,6 +50,19 @@
       </button>
       <div id="form-status" [class.error]="sendError">{{ status }}</div>
     </form>
+    <div class="booking-cta" data-reveal>
+      <div class="booking-cta-icon"><i data-lucide="calendar-check"></i></div>
+      <div class="booking-cta-text">
+        <strong>{{ i18n.t('contact.bookingTitle') }}</strong>
+        <span>{{ i18n.t('contact.bookingDesc') }}</span>
+      </div>
+      <a class="btn btn-secondary booking-cta-btn"
+         href="https://cal.com/arijesama-dev/30min"
+         target="_blank" rel="noopener noreferrer">
+        <i data-lucide="calendar-plus"></i>
+        {{ i18n.t('contact.bookingCta') }}
+      </a>
+    </div>
   </div>
 
   <div class="contact-notification" *ngIf="notification" [class.success]="notification.type === 'success'" [class.error]="notification.type === 'error'">

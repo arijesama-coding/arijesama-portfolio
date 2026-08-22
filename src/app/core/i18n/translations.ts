@@ -94,8 +94,8 @@ export const TRANSLATIONS: Record<'fr' | 'en', Record<string, string>> = {
     'why.title': 'Quatre principes derrière chaque projet.',
 
     /* ---------- Testimonial ---------- */
-    'testi.quote1': '« Un bon logiciel disparaît dans le travail qu’il rend possible.',
-    'testi.quote2': 'Un mauvais logiciel devient le travail. »',
+    'testi.quote1': '« Un bon logiciel simplifie le travail.',
+    'testi.quote2': 'Un mauvais logiciel le complique. »',
     'testi.source': '— Principe de travail',
 
     /* ---------- Contact ---------- */
@@ -104,9 +104,12 @@ export const TRANSLATIONS: Record<'fr' | 'en', Record<string, string>> = {
     'contact.desc':
       'Produit complet, audit technique, ou un système qui doit grandir sans casser. Dites-moi ce que vous avez entre les mains.',
     'contact.remote': 'Disponible en télétravail partout dans le monde ou en présentiel à Madagascar',
-    'contact.name': 'Nom',
-    'contact.email': 'E-mail',
-    'contact.project': 'Projet',
+    'contact.name': 'Votre nom',
+    'contact.email': 'Votre E-mail',
+    'contact.project': 'Votre projet',
+    'contact.bookingTitle': 'Parlons de votre prochaine opportunité',
+    'contact.bookingDesc': 'Un échange de 30 minutes pour discuter de vos besoins, de mon expérience et de la manière dont je pourrais contribuer à votre équipe.',
+    'contact.bookingCta': 'Prendre rendez-vous',
     'contact.message': 'Message',
     'contact.send': 'Envoyer le message',
     'contact.statusEmpty': 'Merci de renseigner votre nom, votre e-mail et votre message.',
@@ -212,8 +215,8 @@ export const TRANSLATIONS: Record<'fr' | 'en', Record<string, string>> = {
     'why.title': 'Four principles behind every project.',
 
     /* ---------- Testimonial ---------- */
-    'testi.quote1': '“Good software disappears into the work it enables.',
-    'testi.quote2': 'Bad software becomes the work.”',
+    'testi.quote1': '“Good software saves time.',
+    'testi.quote2': ' Bad software wastes it.”',
     'testi.source': '— Working principle',
 
     /* ---------- Contact ---------- */
@@ -222,11 +225,14 @@ export const TRANSLATIONS: Record<'fr' | 'en', Record<string, string>> = {
     'contact.desc':
       'Full product build, technical audit, or a system that needs to grow without breaking. Tell me what you’re dealing with.',
     'contact.remote': 'Available worldwide remotely or on-site in Madagascar',
-    'contact.name': 'Name',
-    'contact.email': 'Email',
-    'contact.project': 'Project',
+    'contact.name': 'Your Name',
+    'contact.email': 'Your Email',
+    'contact.project': 'Your Project',
     'contact.message': 'Message',
     'contact.send': 'Send Message',
+    'contact.bookingTitle': 'Let’s Talk About Your Next Opportunity',
+    'contact.bookingDesc': 'A 30-minute conversation to discuss your needs, my experience, and how I could contribute to your team.',
+    'contact.bookingCta': 'Book a Meeting',
     'contact.statusEmpty': 'Please fill in your name, email and message.',
     'contact.statusOpening': 'Opening your email client to send this message…',
     'contact.subjectPrefix': 'Project inquiry from ',

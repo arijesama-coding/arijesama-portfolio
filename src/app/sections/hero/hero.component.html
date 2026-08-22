@@ -18,7 +18,12 @@
 <!--      </p>-->
       <div class="hero-actions" data-reveal>
         <a href="#projects" class="btn btn-primary">{{ i18n.t('hero.work') }}</a>
-        <a href="assets/cv/{{i18n.t('hero.resume.link') }}" class="btn btn-ghost">{{ i18n.t('hero.resume') }}</a>
+        <a
+          [href]="'assets/cv/' + i18n.t('hero.resume.link')"
+          download
+          class="btn btn-ghost">
+          {{ i18n.t('hero.resume') }}
+        </a>
       </div>
     </div>
     <div class="hero-visual">

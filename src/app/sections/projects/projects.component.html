@@ -1,8 +1,8 @@
 <section id="projects" class="section-pad bg-b projects-section">
   <div class="container">
     <div class="section-head">
-      <div class="eyebrow" data-reveal>Selected Work</div>
-      <h2 data-reveal>A showroom of systems I've engineered.</h2>
+      <div class="eyebrow" data-reveal>{{ i18n.t('projects.eyebrow') }}</div>
+      <h2 data-reveal>{{ i18n.t('projects.title') }}</h2>
     </div>
   </div>
 
@@ -14,17 +14,28 @@
             <div class="p-top-left">
               <span class="p-num">{{ p.num }}</span>
               <div class="p-top-meta">
-                <p class="p-cat">{{ p.cat }}</p>
+                <p class="p-cat">{{ i18n.pick(p.cat) }}</p>
                 <h3 class="p-title">{{ p.title }}</h3>
               </div>
             </div>
-            <a [href]="p.link || '#contact'" class="p-cta">
-              {{ p.cta || 'View Project' }}
-              <i data-lucide="arrow-up-right"></i>
-            </a>
+            @if (hasValidLink(p)) {
+              <a [href]="p.link" class="p-cta" target="_blank" rel="noopener noreferrer">
+                {{ i18n.t('projects.visitWebsite') }}
+                <i data-lucide="arrow-up-right"></i>
+              </a>
+            } @else {
+              <span
+                class="p-cta p-cta--locked"
+                aria-disabled="true"
+                [title]="i18n.t('projects.privateHint')"
+              >
+                {{ i18n.t('projects.private') }}
+                <i class="fa-solid fa-lock"></i>
+              </span>
+            }
           </div>
 
-          <p class="p-desc">{{ p.desc }}</p>
+          <p class="p-desc">{{ i18n.pick(p.desc) }}</p>
 
           <!-- Première image affichée par défaut sur la card -->
           @if (hasImages(p)) {
@@ -32,7 +43,7 @@
               type="button"
               class="p-image-single p-image-clickable"
               (click)="openGallery(p, $event)"
-              [attr.aria-label]="'View gallery for ' + p.title"
+              [attr.aria-label]="i18n.t('projects.galleryFor') + p.title"
             >
               <img
                 [src]="p.images[0]"
@@ -43,19 +54,26 @@
               <div class="p-image-overlay">
                 <span>
                   <i data-lucide="images"></i>
-                  View gallery
+                  {{ i18n.t('projects.viewGallery') }}
                 </span>
               </div>
             </button>
+          } @else {
+            <div class="p-image-single p-image-placeholder" aria-hidden="false">
+              <div class="p-placeholder-inner">
+                <i class="fa-solid fa-lock"></i>
+                <span>{{ i18n.t('projects.private') }}</span>
+              </div>
+            </div>
           }
 
           <div class="p-footer">
             @if (p.role.length) {
               <div class="p-role">
-                <span class="p-role-label">My Role</span>
+                <span class="p-role-label">{{ i18n.t('projects.myRole') }}</span>
                 <ul>
-                  @for (r of p.role; track r) {
-                    <li>{{ r }}</li>
+                  @for (r of p.role; track r.fr) {
+                    <li>{{ i18n.pick(r) }}</li>
                   }
                 </ul>
               </div>
@@ -65,11 +83,6 @@
               @if (p.year) {
                 <span class="p-year">{{ p.year }}</span>
               }
-              <div class="p-tech">
-                @for (t of p.tech; track t) {
-                  <span>{{ t }}</span>
-                }
-              </div>
             </div>
           </div>
         </article>
@@ -92,7 +105,7 @@
         type="button"
         class="project-gallery__close"
         (click)="closeGallery()"
-        aria-label="Close gallery"
+        [attr.aria-label]="i18n.t('projects.closeGallery')"
       >
         <i class="fa-solid fa-xmark"></i>
       </button>
@@ -115,7 +128,7 @@
               type="button"
               class="gallery-arrow gallery-arrow--prev"
               (click)="prevImage()"
-              aria-label="Previous image"
+              [attr.aria-label]="i18n.t('projects.prevImage')"
             >
               <i class="fa-solid fa-chevron-left"></i>
             </button>
@@ -124,7 +137,7 @@
               type="button"
               class="gallery-arrow gallery-arrow--next"
               (click)="nextImage()"
-              aria-label="Next image"
+              [attr.aria-label]="i18n.t('projects.nextImage')"
             >
               <i class="fa-solid fa-chevron-right"></i>
             </button>
@@ -135,7 +148,7 @@
                   class="gallery-dots__dot"
                   [class.is-active]="di === activeImageIndex()"
                   (click)="goToImage(di)"
-                  [attr.aria-label]="'Go to image ' + (di + 1)"
+                  [attr.aria-label]="i18n.t('projects.goToImage') + (di + 1)"
                 ></button>
               }
             </div>
