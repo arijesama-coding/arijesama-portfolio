@@ -18,10 +18,21 @@
                 <h3 class="p-title">{{ p.title }}</h3>
               </div>
             </div>
-            <a [href]="p.link || '#contact'" class="p-cta">
-              {{ p.cta || 'View Project' }}
-              <i data-lucide="arrow-up-right"></i>
-            </a>
+            @if (hasValidLink(p)) {
+              <a [href]="p.link" class="p-cta" target="_blank" rel="noopener noreferrer">
+                {{ p.cta || 'View Project' }}
+                <i data-lucide="arrow-up-right"></i>
+              </a>
+            } @else {
+              <span
+                class="p-cta p-cta--locked"
+                aria-disabled="true"
+                title="Private project — case study unavailable"
+              >
+                Private Project
+                <i class="fa-solid fa-lock"></i>
+              </span>
+            }
           </div>
 
           <p class="p-desc">{{ p.desc }}</p>
@@ -47,6 +58,13 @@
                 </span>
               </div>
             </button>
+          } @else {
+            <div class="p-image-single p-image-placeholder" aria-hidden="false">
+              <div class="p-placeholder-inner">
+                <i class="fa-solid fa-lock"></i>
+                <span>Private Project</span>
+              </div>
+            </div>
           }
 
           <div class="p-footer">

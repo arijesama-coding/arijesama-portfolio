@@ -9,7 +9,7 @@ export interface ProjectItem {
   cat: string;
   title: string;
   desc: string;
-  tech: string[];
+  // tech: string[];
   images: string[];
   role: string[];
   year: string;

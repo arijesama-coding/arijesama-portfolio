@@ -121,6 +121,23 @@
   }
 }
 
+/* CTA de remplacement quand aucun lien de case study n'est disponible */
+.p-cta--locked {
+  cursor: not-allowed;
+  opacity: 0.55;
+  user-select: none;
+
+  i {
+    width: 13px;
+    height: 13px;
+  }
+
+  &:hover {
+    background: none;
+    color: var(--card-fg);
+  }
+}
+
 .p-desc {
   flex-shrink: 0;
   margin: 0;
@@ -191,6 +208,43 @@
   .p-img-full {
     width: 100%;
     height: 100%;
+  }
+}
+
+/* Placeholder affiché à la place de l'image quand le projet n'a
+   aucune photo (typiquement un Private Project). Reprend le même
+   gabarit que .p-image-single pour ne pas casser la mise en page. */
+.p-image-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(215, 226, 234, 0.05) 0 10px,
+      rgba(215, 226, 234, 0.02) 10px 20px
+    ),
+    rgba(255, 255, 255, 0.02);
+  border: 1px dashed rgba(215, 226, 234, 0.25);
+}
+
+.p-placeholder-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  opacity: 0.55;
+  text-align: center;
+
+  i {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+  }
+
+  span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
   }
 }
 
