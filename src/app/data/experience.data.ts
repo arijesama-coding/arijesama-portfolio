@@ -2,24 +2,45 @@ import { ExperienceItem } from '../shared/models/portfolio.models';
 
 export const EXPERIENCE: ExperienceItem[] = [
   {
-    period: '2024 — Present',
-    role: 'Full-Stack Developer',
-    company: 'Independent / Freelance',
-    desc: 'Designing and building production systems end-to-end — from data architecture to interface, for clients across finance, retail and internal tooling.',
-    tech: ['Java', 'React', 'PostgreSQL']
+    period: 'Jan. 2026 — Jul. 2026',
+    role: 'Software Developer Junior',
+    company: 'ZettaByte — 100% Remote',
+    desc: 'Worked as a junior software developer on Java and Spring Boot applications, contributing to Angular interfaces and working with MongoDB in a fully remote environment.',
+    tech: ['Java 21', 'Spring Boot 3.x', 'Angular 21', 'MongoDB']
   },
+
   {
-    period: '2022 — 2024',
-    role: 'Software Engineer',
-    company: 'Enterprise Systems Team',
-    desc: 'Built and maintained backend services and internal platforms supporting high-throughput business operations.',
-    tech: ['Spring Boot', 'Kafka', 'Docker']
+    period: 'Jun. 2025 — Nov. 2025',
+    role: 'Fullstack & Mobile Developer Junior',
+    company: 'CNaPS Madagascar — Antananarivo',
+    desc: 'Developed and maintained Java and Spring applications, built Angular 12 interfaces and contributed to mobile applications with Ionic while working with Oracle 11g and JUnit.',
+    tech: [
+      'Java 8/11',
+      'Spring Framework',
+      'Angular 12',
+      'Ionic',
+      'Oracle 11g',
+      'JUnit 5',
+      'Git',
+      'Maven'
+    ]
   },
+
   {
-    period: '2020 — 2022',
-    role: 'Junior Developer',
-    company: 'Web Development Studio',
-    desc: 'Shipped client-facing web applications and contributed to a shared component library used across projects.',
-    tech: ['Angular', 'JavaScript', 'Git']
+    period: 'Aug. 2024 — May 2025',
+    role: 'Software Developer Junior',
+    company: 'Slite — Paris, France · Remote',
+    desc: 'Worked on Java and Spring Boot applications, contributed to Angular interfaces and mobile features with Ionic, and worked with PostgreSQL, Redis, Docker, Kubernetes and Grafana in a remote environment.',
+    tech: [
+      'Java 17',
+      'Spring Boot 3.x',
+      'Angular 21',
+      'Ionic',
+      'PostgreSQL',
+      'Redis',
+      'Docker',
+      'Kubernetes',
+      'Grafana'
+    ]
   }
 ];

@@ -154,7 +154,7 @@ section{position:relative;}
 }
 #loader .loader-bar-fill{
   position:absolute;left:0;top:0;bottom:0;
-  width:0%;
+  width:0;
   background:var(--cyan);
 }
 #loader .loader-pct{

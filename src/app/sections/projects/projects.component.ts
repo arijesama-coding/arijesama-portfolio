@@ -42,6 +42,16 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
   }
 
   /**
+   * True si le lien vers le case study est réellement exploitable
+   * (non vide, non `#`, non undefined). Sinon le projet est considéré
+   * comme privé : on affiche un cadenas au lieu d'un lien cliquable.
+   */
+  protected hasValidLink(p: ProjectItem): boolean {
+    const link = p.link?.trim();
+    return !!link && link !== '#';
+  }
+
+  /**
    * Retourne les images du projet dans l’ordre défini dans les données.
    * Ne mélange jamais les images d’autres projets.
    */
