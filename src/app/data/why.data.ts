@@ -4,21 +4,21 @@ export const WHY: WhyItem[] = [
   {
     num: '01',
     title: 'Engineering',
-    desc: 'Solid Java & Angular architecture — clean, scalable and designed for real-world applications.'
+    desc: 'Systems built on solid architecture, not shortcuts — designed to scale with real usage.'
   },
   {
     num: '02',
     title: 'Performance',
-    desc: 'Fast APIs and responsive interfaces — optimized from backend processing to frontend rendering.'
+    desc: 'Every interface is held to a 60fps standard, from first paint to final interaction.'
   },
   {
     num: '03',
-    title: 'Quality',
-    desc: 'Clean, tested and maintainable code — following solid engineering practices, not shortcuts.'
+    title: 'Design',
+    desc: 'Interfaces considered down to spacing, motion and hierarchy — never an afterthought.'
   },
   {
     num: '04',
     title: 'Reliability',
-    desc: 'Secure, documented and production-ready systems — built to be understood, maintained and extended by teams.'
+    desc: 'Code that is maintainable, tested and documented — built for the team that inherits it.'
   }
 ];

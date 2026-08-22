@@ -1,26 +1,47 @@
 <header id="navbar">
   <div class="container nav-inner">
     <a href="#hero" class="nav-logo" (click)="closeMenu()">
-      <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.65 26.73"><polygon points="9.47 10.26 12.93 10.26 16.74 3.06 15.11 0 9.47 10.26"/><polygon points="13.39 2.92 18.76 13.93 21 10.26 15.22 0 13.39 2.92"/><polygon points="1.72 12.12 14.63 12.12 20.89 23.26 24.08 23.26 20 15.99 24.08 8.31 27.95 8.31 23.74 15.79 29.65 26.73 18.85 26.73 12.46 15.34 3.96 15.34 1.72 12.12"/><polygon points="5.37 17.25 9.11 17.25 5.84 23.11 9.11 23.11 12.17 18.15 14.09 21.82 11.42 26.45 0 26.45 5.37 17.25"/></svg>
+      <svg class="logo-svg" [class.spin]="spinning()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.65 26.73"><polygon points="9.47 10.26 12.93 10.26 16.74 3.06 15.11 0 9.47 10.26"/><polygon points="13.39 2.92 18.76 13.93 21 10.26 15.22 0 13.39 2.92"/><polygon points="1.72 12.12 14.63 12.12 20.89 23.26 24.08 23.26 20 15.99 24.08 8.31 27.95 8.31 23.74 15.79 29.65 26.73 18.85 26.73 12.46 15.34 3.96 15.34 1.72 12.12"/><polygon points="5.37 17.25 9.11 17.25 5.84 23.11 9.11 23.11 12.17 18.15 14.09 21.82 11.42 26.45 0 26.45 5.37 17.25"/></svg>
       <span class="mark-text">
         <span class="mark">ARIJESAMA.DEV</span>
-        <span class="sub">Fullstack Java / Spring Boot / Angular</span>
+        <span class="sub">{{ i18n.t('nav.subtitle') }}</span>
       </span>
     </a>
     <nav class="nav-links">
-      <a href="#hero">Home</a>
-      <a href="#about">About</a>
-      <a href="#stack">Stack</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#contact">Contact</a>
+      <a href="#hero">{{ i18n.t('nav.home') }}</a>
+      <a href="#about">{{ i18n.t('nav.about') }}</a>
+      <a href="#stack">{{ i18n.t('nav.stack') }}</a>
+      <a href="#projects">{{ i18n.t('nav.projects') }}</a>
+      <a href="#experience">{{ i18n.t('nav.experience') }}</a>
+      <a href="#contact">{{ i18n.t('nav.contact') }}</a>
     </nav>
     <div class="nav-cta">
-      <a href="#contact" class="btn btn-ghost">Let's Talk</a>
+      <a href="#contact" class="btn btn-ghost">{{ i18n.t('nav.hire') }}</a>
+      <div class="nav-controls">
+        <button
+          type="button"
+          class="theme-toggle"
+          (click)="toggleTheme()"
+          [attr.aria-label]="theme.isDark() ? i18n.t('theme.toLight') : i18n.t('theme.toDark')"
+          [title]="theme.isDark() ? i18n.t('theme.toLight') : i18n.t('theme.toDark')">
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+        <div class="lang-switch" role="group" aria-label="Language / Langue">
+          <button type="button"
+                  [class.active]="i18n.lang() === 'fr'"
+                  [attr.aria-pressed]="i18n.lang() === 'fr'"
+                  (click)="setLang('fr')">FR</button>
+          <button type="button"
+                  [class.active]="i18n.lang() === 'en'"
+                  [attr.aria-pressed]="i18n.lang() === 'en'"
+                  (click)="setLang('en')">EN</button>
+        </div>
+      </div>
       <button class="hamburger" id="hamburger"
               [class.active]="menuOpen"
               [attr.aria-expanded]="menuOpen"
-              aria-label="Open menu"
+              [attr.aria-label]="i18n.t('nav.menu')"
               (click)="toggleMenu()">
         <span></span><span></span><span></span>
       </button>
@@ -29,10 +50,10 @@
 </header>
 
 <nav id="mobile-menu" [class.open]="menuOpen" [attr.aria-hidden]="!menuOpen">
-  <a href="#hero" (click)="closeMenu()">Home</a>
-  <a href="#about" (click)="closeMenu()">About</a>
-  <a href="#stack" (click)="closeMenu()">Stack</a>
-  <a href="#projects" (click)="closeMenu()">Projects</a>
-  <a href="#experience" (click)="closeMenu()">Experience</a>
-  <a href="#contact" (click)="closeMenu()">Contact</a>
+  <a href="#hero" (click)="closeMenu()">{{ i18n.t('nav.home') }}</a>
+  <a href="#about" (click)="closeMenu()">{{ i18n.t('nav.about') }}</a>
+  <a href="#stack" (click)="closeMenu()">{{ i18n.t('nav.stack') }}</a>
+  <a href="#projects" (click)="closeMenu()">{{ i18n.t('nav.projects') }}</a>
+  <a href="#experience" (click)="closeMenu()">{{ i18n.t('nav.experience') }}</a>
+  <a href="#contact" (click)="closeMenu()">{{ i18n.t('nav.contact') }}</a>
 </nav>

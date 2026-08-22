@@ -1,8 +1,8 @@
 <section id="stack" class="section-pad bg-b">
   <div class="container">
     <div class="section-head">
-      <div class="eyebrow" data-reveal>The Technology Stack</div>
-      <h2 data-reveal>Tools I use to turn ideas into production-ready systems.</h2>
+      <div class="eyebrow" data-reveal>{{ i18n.t('stack.eyebrow') }}</div>
+      <h2 data-reveal>{{ i18n.t('stack.title') }}</h2>
     </div>
     <div class="stack-grid" id="stack-grid">
       @for (s of items; track s.name; let i = $index) {
@@ -19,14 +19,14 @@
           <div class="icon-wrap"><i [class]="s.icon"></i></div>
           <div>
             <div class="name">{{ s.name }}</div>
-            <div class="cat">{{ s.cat }}</div>
+            <div class="cat">{{ i18n.pick(s.cat) }}</div>
           </div>
 
           @if (isActive(i)) {
             <div class="stack-info">
               <ul>
-                @for (p of getMeta(s.name).points; track p) {
-                  <li>{{ p }}</li>
+                @for (p of getMeta(s.name).points; track p.fr) {
+                  <li>{{ i18n.pick(p) }}</li>
                 }
               </ul>
             </div>

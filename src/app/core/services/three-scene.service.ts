@@ -11,6 +11,7 @@ export class ThreeSceneService implements OnDestroy {
   private particleSystem!: THREE.Points;
   private logoMat!: THREE.MeshPhysicalMaterial;
   private logoGlowMat!: THREE.MeshBasicMaterial;
+  private logoEmissiveBase = 0.22;
   private orbiters: THREE.Mesh[] = [];
   private clock = new THREE.Clock();
   private animId = 0;
@@ -250,7 +251,7 @@ export class ThreeSceneService implements OnDestroy {
         o.rotation.y += 0.01;
       });
       this.particleSystem.rotation.y = t * 0.015;
-      this.logoMat.emissiveIntensity = 0.22 + Math.sin(t * 1.6) * 0.1;
+      this.logoMat.emissiveIntensity = this.logoEmissiveBase + Math.sin(t * 1.6) * 0.1;
       this.logoGlowMat.opacity = 0.05 + (Math.sin(t * 1.6) * 0.5 + 0.5) * 0.05;
 
       this.heroTargetX += (this.heroMouseX - this.heroTargetX) * 0.05;
@@ -268,6 +269,32 @@ export class ThreeSceneService implements OnDestroy {
 
   getParticleSystem(): THREE.Points | null {
     return this.particleSystem || null;
+  }
+
+  isInitialized(): boolean {
+    return this.initialized;
+  }
+
+  /** Adapt scene materials to the active theme (dark = default look). */
+  applyTheme(isDark: boolean): void {
+    if (!this.initialized) return;
+    if (this.particleSystem) {
+      const mat = this.particleSystem.material as THREE.PointsMaterial;
+      mat.color.setHex(isDark ? 0x55dbe5 : 0x0a8fa1);
+      mat.opacity = isDark ? 0.5 : 0.45;
+      mat.needsUpdate = true;
+    }
+    if (this.logoMat) {
+      this.logoMat.color.setHex(isDark ? 0x050607 : 0xdde3e6);
+      this.logoMat.emissive.setHex(0x55dbe5);
+      this.logoEmissiveBase = isDark ? 0.22 : 0.32;
+      this.logoMat.needsUpdate = true;
+    }
+    if (this.ringMesh) {
+      const ringMat = this.ringMesh.material as THREE.MeshPhysicalMaterial;
+      ringMat.color.setHex(isDark ? 0xc5cbd0 : 0x5a626a);
+      ringMat.needsUpdate = true;
+    }
   }
 
   onHeroScroll(progress: number): void {

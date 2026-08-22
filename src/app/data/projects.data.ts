@@ -1,77 +1,76 @@
 import { ProjectItem } from '../shared/models/portfolio.models';
 
+
 export const PROJECTS: ProjectItem[] = [
   {
     num: '01',
-    cat: 'Management Platform',
+    cat: 'Web Platform',
     title: 'JobFlow',
-    desc: 'Web platform designed to centralize job management, scheduling, team coordination, workflows and operational activities.',
-    images: [
-      'assets/projects/jobflow-hero.png'
-    ],
+    desc: 'High-volume recruitment platform with real-time applicant matching and interview orchestration.',
+    tech: ['Java', 'Spring Boot', 'React', 'PostgreSQL'],
+    images: ['assets/projects/jobflow-hero.png' , 'assets/projects/jobflow-hero.png' , 'assets/projects/jobflow-hero.png'],
     role: [
-      'Developed and maintained core platform features',
-      'Built and improved web interfaces and user workflows',
-      'Designed and integrated application services and APIs',
-      'Worked on data management and application reliability'
+      'Designed and developed the backend architecture',
+      'Implemented real-time applicant matching algorithm',
+      'Developed interview orchestration system',
+      'Designed REST APIs and database structures'
     ],
-    year: '2026',
-    cta: 'Visit Website',
-    link: 'https://jobflow.com'
+    year: '2024',
+    cta: 'View Case Study',
+    link: '#'
   },
 
   {
     num: '02',
-    cat: 'Management Platform',
+    cat: 'Internal Tool',
     title: 'Gestion CCL',
-    desc: 'Management platform developed for the Complexe Culturel et de Loisirs Vontovorona, focused on business workflows, data management and operational activities.',
-    images: [],
+    desc: 'A management system built for tracking contracts, clients and operational workflows at scale.',
+    tech: ['Java', 'Spring Boot', 'Angular', 'TypeScript', 'PostgreSQL'],
+    images: ['assets/projects/gestion-ccl-hero.png'],
     role: [
-      'Developed and maintained core business features',
-      'Built and improved web interfaces',
-      'Designed and integrated application services and APIs',
-      'Worked on data management, testing and application reliability'
+      'Developed business management workflows',
+      'Built REST APIs with Spring Boot',
+      'Developed responsive interfaces with Angular',
+      'Integrated and structured PostgreSQL data'
     ],
     year: '2025',
-    cta: '#',
+    cta: 'View Case Study',
     link: '#'
   },
 
   {
     num: '03',
-    cat: 'SaaS Platform',
+    cat: 'Finance',
     title: 'InvoiceNinja',
-    desc: 'SaaS business platform focused on invoicing, payments, project management, client management and billing workflows.',
-    images: [
-      'assets/projects/invoiceninja-hero.png'
-    ],
+    desc: 'Automated invoicing and billing engine with multi-currency support and audit-ready exports.',
+    tech: ['Java', 'Spring Boot', 'Redis'],
+    images: ['assets/projects/invoiceninja-hero.png'],
     role: [
-      'Developed and maintained business-oriented platform features',
-      'Built and improved web interfaces and user workflows',
-      'Worked on billing, invoicing and business processes',
-      'Contributed to application reliability and data management'
+      'Designed and developed backend services',
+      'Implemented automated invoicing workflows',
+      'Integrated Redis for caching and performance',
+      'Developed reliable billing and data processing logic'
     ],
-    year: '2025',
-    cta: 'Visit Website',
-    link: 'https://invoiceninja.com'
+    year: '2024',
+    cta: 'View Case Study',
+    link: '#'
   },
 
   {
     num: '04',
-    cat: 'E-Signature Platform',
+    cat: 'Documents',
     title: 'Documenso',
-    desc: 'Document signing platform focused on electronic signatures, document workflows, templates, recipients and digital approval processes.',
-    images: [
-      'assets/projects/documenso-hero.png'
-    ],
+    desc: 'A document workflow tool for structured review, versioning and approval chains.',
+    tech: ['React', 'Node.js', 'Docker'],
+    images:[ 'assets/projects/documenso-hero.png'],
     role: [
-      'Developed and maintained document workflow features',
-      'Built and improved user interfaces and signing experiences',
-      'Worked on document management and business processes',
-      'Contributed to application reliability and data management'
+      'Developed interactive document workflows',
+      'Built reusable React components',
+      'Implemented document processing features',
+      'Containerized the application with Docker'
     ],
-    year: '2024',
-    cta: 'Visit Website',
-    link: 'https://documenso.com'
+    year: '2025',
+    cta: 'View Case Study',
+    link: '#'
   }
 ];

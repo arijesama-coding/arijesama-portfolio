@@ -64,11 +64,11 @@
   z-index: 6;
   padding: 0.9rem 1rem;
   border-radius: 12px;
-  background: var(--stack-info-bg, rgba(12, 14, 20, 0.92));
-  border: 1px solid var(--stack-info-border, rgba(255, 255, 255, 0.08));
+  background: var(--stack-info-bg, var(--popover-bg));
+  border: 1px solid var(--stack-info-border, var(--popover-border));
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 20px 40px -20px var(--shadow-card);
   pointer-events: none;
   animation: stack-info-in 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 
@@ -86,7 +86,7 @@
     padding-left: 0.85rem;
     font-size: 0.78rem;
     line-height: 1.45;
-    color: rgba(255, 255, 255, 0.82);
+    color: var(--popover-text);
 
     &::before {
       content: '';
