@@ -78,6 +78,10 @@ export const TRANSLATIONS: Record<'fr' | 'en', Record<string, string>> = {
     'projects.prevImage': 'Image précédente',
     'projects.nextImage': 'Image suivante',
     'projects.goToImage': 'Aller à l’image ',
+    'projects.seeMoreDetails': 'Voir plus de détails',
+    'projects.objective': 'Objectif',
+    'projects.features': 'Fonctionnalités',
+    'projects.closeDetails': 'Fermer les détails',
 
     /* ---------- Experience ---------- */
     'exp.eyebrow': 'Expérience d’ingénierie',
@@ -116,6 +120,7 @@ export const TRANSLATIONS: Record<'fr' | 'en', Record<string, string>> = {
     'contact.statusOpening': 'Ouverture de votre client e-mail pour envoyer ce message…',
     'contact.subjectPrefix': 'Demande de projet de ',
     'contact.statusSent': 'Message envoyé avec succès.',
+    'contact.closeNotification': 'Fermer la notification',
 
     /* ---------- Footer ---------- */
     'footer.tagline': 'Construire des expériences numériques avec technologie et précision.',
@@ -199,6 +204,10 @@ export const TRANSLATIONS: Record<'fr' | 'en', Record<string, string>> = {
     'projects.prevImage': 'Previous image',
     'projects.nextImage': 'Next image',
     'projects.goToImage': 'Go to image ',
+    'projects.seeMoreDetails': 'See more details',
+    'projects.objective': 'Objective',
+    'projects.features': 'Features',
+    'projects.closeDetails': 'Close details',
 
     /* ---------- Experience ---------- */
     'exp.eyebrow': 'Engineering Experience',
@@ -237,6 +246,7 @@ export const TRANSLATIONS: Record<'fr' | 'en', Record<string, string>> = {
     'contact.statusOpening': 'Opening your email client to send this message…',
     'contact.subjectPrefix': 'Project inquiry from ',
     'contact.statusSent': 'Message sent successfully.',
+    'contact.closeNotification': 'Close notification',
 
     /* ---------- Footer ---------- */
     'footer.tagline': 'Building digital experiences with technology and precision.',

@@ -6,13 +6,14 @@ import {
   OnDestroy,
   QueryList,
   ViewChildren,
+  inject,
   signal,
 } from '@angular/core';
 import { PROJECTS } from '../../data/projects.data';
 import { ProjectItem } from '../../shared/models/portfolio.models';
+import { I18nService } from '../../core/services/i18n.service';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { I18nService } from '../../core/services/i18n.service';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,16 +26,20 @@ gsap.registerPlugin(ScrollTrigger);
 export class ProjectsComponent implements AfterViewInit, OnDestroy {
   items: ProjectItem[] = PROJECTS;
 
-  constructor(public i18n: I18nService) {}
+  /** i18n : exposé au template pour t() / pick() */
+  public readonly i18n = inject(I18nService);
 
   @ViewChildren('stickyWrap') stickyRefs!: QueryList<ElementRef<HTMLElement>>;
   @ViewChildren('card') cardRefs!: QueryList<ElementRef<HTMLElement>>;
 
   private readonly mm = gsap.matchMedia();
 
-  /** Galerie d’images (modale) */
+  /** Galerie d'images (modale) */
   protected readonly selectedProject = signal<ProjectItem | null>(null);
   protected readonly activeImageIndex = signal(0);
+
+  /** Panneau "See more details" (Impact → Objective → Features → Role) */
+  protected readonly selectedDetailsProject = signal<ProjectItem | null>(null);
 
   private touchStartX = 0;
   private touchDeltaX = 0;
@@ -55,8 +60,8 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
   }
 
   /**
-   * Retourne les images du projet dans l’ordre défini dans les données.
-   * Ne mélange jamais les images d’autres projets.
+   * Retourne les images du projet dans l'ordre défini dans les données.
+   * Ne mélange jamais les images d'autres projets.
    */
   protected getProjectImages(p: ProjectItem): string[] {
     return Array.isArray(p.images) ? p.images.filter(Boolean) : [];
@@ -71,7 +76,7 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     return `min(calc(5.5rem + ${i * 26}px), 22vh)`;
   }
 
-  /** Ouvre la galerie d’images du projet (première image = index 0) */
+  /** Ouvre la galerie d'images du projet (première image = index 0) */
   protected openGallery(project: ProjectItem, event?: Event): void {
     event?.stopPropagation();
     const images = this.getProjectImages(project);
@@ -107,8 +112,28 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     this.activeImageIndex.set(index);
   }
 
+  /** Ouvre le panneau de détails (Impact → Objective → Features → Role). */
+  protected openDetails(project: ProjectItem, event?: Event): void {
+    event?.stopPropagation();
+    this.selectedDetailsProject.set(project);
+    document.body.style.overflow = 'hidden';
+  }
+
+  protected closeDetails(): void {
+    this.selectedDetailsProject.set(null);
+    document.body.style.overflow = '';
+  }
+
   @HostListener('document:keydown', ['$event'])
   protected onKeydown(event: KeyboardEvent): void {
+    if (this.selectedDetailsProject()) {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        this.closeDetails();
+      }
+      return;
+    }
+
     if (!this.selectedProject()) return;
 
     switch (event.key) {

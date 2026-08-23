@@ -68,7 +68,7 @@
   <div class="contact-notification" *ngIf="notification" [class.success]="notification.type === 'success'" [class.error]="notification.type === 'error'">
     <i class="fa-solid" [class.fa-circle-check]="notification.type === 'success'" [class.fa-circle-exclamation]="notification.type === 'error'"></i>
     <span>{{ notification.message }}</span>
-    <button type="button" class="contact-notification-close" (click)="dismissNotification()" aria-label="Fermer">
+    <button type="button" class="contact-notification-close" (click)="dismissNotification()" [attr.aria-label]="i18n.t('contact.closeNotification')">
       <i class="fa-solid fa-xmark"></i>
     </button>
   </div>

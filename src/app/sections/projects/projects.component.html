@@ -37,7 +37,7 @@
 
           <p class="p-desc">{{ i18n.pick(p.desc) }}</p>
 
-          <!-- Première image affichée par défaut sur la card -->
+          <!-- Première image affichée par défaut sur la card (desktop) -->
           @if (hasImages(p)) {
             <button
               type="button"
@@ -58,6 +58,17 @@
                 </span>
               </div>
             </button>
+
+            <!-- Mobile only: image is hidden, direct access via a dedicated button -->
+            <button
+              type="button"
+              class="p-gallery-btn-mobile"
+              (click)="openGallery(p, $event)"
+              [attr.aria-label]="i18n.t('projects.galleryFor') + p.title"
+            >
+              <i data-lucide="images"></i>
+              {{ i18n.t('projects.viewGallery') }}
+            </button>
           } @else {
             <div class="p-image-single p-image-placeholder" aria-hidden="false">
               <div class="p-placeholder-inner">
@@ -72,7 +83,7 @@
               <div class="p-role">
                 <span class="p-role-label">{{ i18n.t('projects.myRole') }}</span>
                 <ul>
-                  @for (r of p.role; track r.fr) {
+                  @for (r of p.role; track $index) {
                     <li>{{ i18n.pick(r) }}</li>
                   }
                 </ul>
@@ -83,7 +94,24 @@
               @if (p.year) {
                 <span class="p-year">{{ p.year }}</span>
               }
+              <!--              <div class="p-tech">-->
+              <!--                @for (t of p.tech; track t) {-->
+              <!--                  <span>{{ t }}</span>-->
+              <!--                }-->
+              <!--              </div>-->
             </div>
+          </div>
+
+          <!-- Accès au détail complet du projet : Impact → Objective → Features → Role -->
+          <div class="p-details-row">
+            <button
+              type="button"
+              class="p-details-btn"
+              (click)="openDetails(p, $event)"
+            >
+              {{ i18n.t('projects.seeMoreDetails') }}
+              <i data-lucide="arrow-down-right"></i>
+            </button>
           </div>
         </article>
       </div>
@@ -160,6 +188,65 @@
         <h3>{{ project.title }}</h3>
         <p>{{ activeImageIndex() + 1 }} / {{ getProjectImages(project).length }}</p>
       </div>
+    </div>
+  </div>
+}
+
+<!-- Panneau de détails du projet : Impact → Objective → Features → Role -->
+@if (selectedDetailsProject(); as project) {
+  <div class="project-details-backdrop" (click)="closeDetails()">
+    <div class="project-details" (click)="$event.stopPropagation()">
+      <button
+        type="button"
+        class="project-details__close"
+        (click)="closeDetails()"
+        [attr.aria-label]="i18n.t('projects.closeDetails')"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="project-details__head">
+        <span class="project-details__num">{{ project.num }}</span>
+        <div class="project-details__head-meta">
+          <p class="project-details__cat">{{ i18n.pick(project.cat) }}</p>
+          <h3>{{ project.title }}</h3>
+        </div>
+      </div>
+
+      <div class="project-details__body">
+        @if (project.impact; as impact) {
+          <div class="project-details__section">
+            <span class="project-details__label">{{ i18n.t('projects.objective') }}</span>
+            <p class="project-details__text">{{ i18n.pick(impact.objective) }}</p>
+          </div>
+
+          <div class="project-details__section">
+            <span class="project-details__label">{{ i18n.t('projects.features') }}</span>
+            <ul class="project-details__list">
+              @for (f of impact.features; track $index) {
+                <li>{{ i18n.pick(f) }}</li>
+              }
+            </ul>
+          </div>
+        }
+
+        @if (project.role.length) {
+          <div class="project-details__section">
+            <span class="project-details__label">{{ i18n.t('projects.myRole') }}</span>
+            <ul class="project-details__list">
+              @for (r of project.role; track $index) {
+                <li>{{ i18n.pick(r) }}</li>
+              }
+            </ul>
+          </div>
+        }
+      </div>
+
+      @if (project.year) {
+        <div class="project-details__footer">
+          <span class="p-year">{{ project.year }}</span>
+        </div>
+      }
     </div>
   </div>
 }
