@@ -11,7 +11,7 @@
 
 .projects-stack {
   position: relative;
-  max-width: 1300px; // narrower than full-bleed on desktop, per request
+  max-width: 1200px; // narrower than full-bleed on desktop, per request
   margin: 0 auto;
   padding: 0 1.5rem 4rem;
 }
@@ -22,7 +22,8 @@
 }
 
 .project-card {
-  /* Theme-aware tokens (values live in styles.scss) */
+  /* Thème : valeurs portées par les tokens globaux (styles.scss),
+     surchargés automatiquement en mode light par html[data-theme='light']. */
   --card-bg: var(--proj-card-bg);
   --card-fg: var(--proj-card-fg);
   --card-border: var(--proj-card-border);
@@ -52,7 +53,12 @@
   overscroll-behavior-y: auto; // (valeur par défaut) laisse le scroll "remonter" à la page une fois la card entièrement parcourue
   transform-origin: top center;
   will-change: transform;
-  box-shadow: 0 30px 60px -30px var(--shadow-card);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.55);
+}
+
+/* Ombre plus douce et teintée en mode light */
+:host-context(html[data-theme='light']) .project-card {
+  box-shadow: 0 30px 60px -35px rgba(9, 50, 60, 0.22);
 }
 
 .p-top {
@@ -102,7 +108,7 @@
   align-items: center;
   gap: 0.4rem;
   padding: 0.6rem 1.1rem;
-  border-radius: 999px;
+  border-radius: 5px;
   border: 1px solid var(--card-border);
   color: var(--card-fg);
   font-size: 0.85rem;
@@ -180,7 +186,7 @@
   width: 100%;
   object-fit: cover;
   display: block;
-  border-radius: clamp(18px, 3vw, 40px);
+  border-radius:5px;
 }
 
 .p-img-top {
@@ -204,7 +210,7 @@
   flex: 1 1 auto;
   min-height: 0;
   overflow: hidden;
-  border-radius: clamp(18px, 3vw, 40px);
+  border-radius: 5px;
 
   .p-img-full {
     width: 100%;
@@ -259,7 +265,7 @@
   text-align: left;
   color: inherit;
   width: 100%;
-  border-radius: clamp(18px, 3vw, 40px);
+  border-radius: 5px;
   overflow: hidden;
 
   &:focus-visible {
@@ -284,7 +290,9 @@
   span {
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--proj-glass-fg);
+    /* Toujours blanc : posé sur le scrim sombre au bas de l'image,
+       quel que soit le thème */
+    color: #fff;
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
@@ -296,21 +304,17 @@
   }
 }
 
-/* Light mode: the label sits on a frosted glass chip so it stays
-   readable over any screenshot, without relying on a heavy scrim. */
-:host-context(html[data-theme='light']) .p-image-overlay span {
-  padding: 0.45rem 0.85rem;
-  border-radius: 999px;
-  background: var(--proj-glass-bg);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 4px 14px -6px rgba(15, 22, 26, 0.35);
-}
-
 .p-image-clickable:hover .p-image-overlay,
 .p-image-clickable:focus-visible .p-image-overlay {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Mobile-only "View Gallery" button — replaces the inline image entirely
+   on small screens. Hidden by default (desktop keeps the image + hover
+   overlay behavior untouched). */
+.p-gallery-btn-mobile {
+  display: none;
 }
 
 .p-footer {
@@ -325,11 +329,11 @@
 }
 
 .p-role {
-  max-width: 42ch;
+  max-width: 60ch;
 
   &-label {
     display: block;
-    font-size: 0.7rem;
+    font-size: 1rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     opacity: 0.6;
@@ -352,7 +356,7 @@
   li {
     position: relative;
     padding-left: 0.85rem;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     opacity: 0.85;
 
     &::before {
@@ -362,7 +366,7 @@
       top: 0.5em;
       width: 4px;
       height: 4px;
-      border-radius: 50%;
+      border-radius: 5px;
       background: currentColor;
       opacity: 0.7;
     }
@@ -389,7 +393,7 @@
 
   span {
     padding: 0.25rem 0.65rem;
-    border-radius: 999px;
+    border-radius: 5px;
     border: 1px solid var(--proj-chip-border);
     font-size: 0.72rem;
     opacity: 0.85;
@@ -405,6 +409,51 @@
   .project-card {
     padding: 1.25rem;
     gap: 0.85rem;
+  }
+
+  /* Images are never shown directly in the card on mobile — a dedicated
+     "View Gallery" button replaces them (see .p-gallery-btn-mobile below).
+     Desktop markup/behavior is untouched. */
+  .p-image-single {
+    display: none !important;
+  }
+
+  .p-gallery-btn-mobile {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.9rem 1.25rem;
+    border-radius: 5px;
+    border: 1px solid var(--proj-card-border);
+    background: var(--proj-stripe-base);
+    color: var(--card-fg, var(--proj-card-fg));
+    font: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: background 0.2s ease, color 0.2s ease;
+
+    i {
+      width: 18px;
+      height: 18px;
+    }
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      background: var(--card-fg, var(--proj-card-fg));
+      color: var(--card-bg, var(--proj-card-bg));
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--card-fg, var(--proj-card-fg));
+      outline-offset: 3px;
+    }
   }
 
   .p-image-grid {
@@ -464,7 +513,7 @@
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background: var(--gallery-backdrop);
+  background: rgba(8, 11, 20, 0.75);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   animation: gallery-fade 0.25s ease-out;
@@ -474,17 +523,22 @@
   }
 }
 
+/* Voile plus clair en mode light */
+:host-context(html[data-theme='light']) .project-gallery-backdrop,
+:host-context(html[data-theme='light']) .project-details-backdrop {
+  background: rgba(24, 32, 38, 0.42);
+}
+
 .project-gallery {
   position: relative;
   width: min(920px, 100%);
   max-height: 90vh;
   display: flex;
   flex-direction: column;
-  border-radius: 12px;
-  background: var(--gallery-panel);
-  border: 1px solid var(--gallery-border);
+  border-radius: 5px;
+  background: var(--proj-card-bg);
+  border: 1px solid var(--proj-chip-border);
   overflow: hidden;
-  box-shadow: 0 40px 80px -40px var(--shadow-card);
   animation: gallery-in 0.35s ease-out;
 
   @media (max-width: 767px) {
@@ -504,12 +558,12 @@
   height: 40px;
   display: grid;
   place-items: center;
-  border-radius: 50%;
+  border-radius: 5px;
   border: none;
   background: var(--proj-glass-bg);
   color: var(--proj-glass-fg);
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition: background 0.2s ease;
 
   i {
     width: 20px;
@@ -518,7 +572,6 @@
 
   &:hover {
     background: var(--proj-glass-hover);
-    transform: scale(1.06);
   }
 }
 
@@ -527,7 +580,7 @@
   aspect-ratio: 16 / 10;
   overflow: hidden;
   touch-action: pan-y;
-  background: var(--gallery-stage);
+  background: var(--proj-stripe-base);
 
   @media (max-width: 767px) {
     aspect-ratio: auto;
@@ -566,12 +619,12 @@
   height: 42px;
   display: grid;
   place-items: center;
-  border-radius: 50%;
+  border-radius: 5px;
   border: none;
   background: var(--proj-glass-bg);
   color: var(--proj-glass-fg);
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition: background 0.2s ease;
 
   i {
     width: 22px;
@@ -580,7 +633,6 @@
 
   &:hover {
     background: var(--proj-glass-hover);
-    transform: translateY(-50%) scale(1.06);
   }
 
   &--prev {
@@ -614,10 +666,9 @@
     width: 8px;
     height: 8px;
     padding: 0;
-    border-radius: 50%;
+    border-radius: 5px;
     border: none;
     background: var(--proj-dot);
-    box-shadow: 0 1px 4px rgba(15, 22, 26, 0.3);
     cursor: pointer;
     transition: background 0.2s ease, transform 0.2s ease;
 
@@ -635,7 +686,7 @@
   align-items: baseline;
   justify-content: space-between;
   gap: 1rem;
-  border-top: 1px solid var(--gallery-border);
+  border-top: 1px solid var(--proj-line);
 
   h3 {
     margin: 0;
@@ -666,5 +717,229 @@
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+/* ============================================================
+   Bouton "See more details" (bas de card)
+   ============================================================ */
+.p-details-row {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.p-details-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 5px;
+  border: 1px solid var(--proj-card-border);
+  background: none;
+  color: var(--proj-card-fg);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.3s ease, color 0.3s ease;
+
+  i {
+    width: 15px;
+    height: 15px;
+  }
+
+  &:hover,
+  &:focus-visible {
+    background: var(--proj-card-fg);
+    color: var(--proj-card-bg);
+  }
+}
+
+@media (max-width: 767px) {
+  .p-details-row {
+    justify-content: flex-start;
+  }
+}
+
+/* ============================================================
+   Panneau de détails projet (modale)
+   Impact → Objective → Features → Role
+   Reprend le même langage visuel que la galerie plein écran
+   (project-gallery-backdrop / project-gallery) pour rester cohérent.
+   ============================================================ */
+.project-details-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(8, 11, 20, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  animation: gallery-fade 0.25s ease-out;
+
+  @media (max-width: 767px) {
+    padding: 0;
+  }
+}
+
+.project-details {
+  position: relative;
+  width: min(680px, 100%);
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  background: var(--proj-card-bg);
+  border: 1px solid var(--proj-chip-border);
+  overflow: hidden;
+  animation: gallery-in 0.35s ease-out;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    border-radius: 0;
+  }
+}
+
+.project-details__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 5;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: none;
+  background: var(--proj-glass-bg);
+  color: var(--proj-glass-fg);
+  cursor: pointer;
+  transition: background 0.2s ease;
+
+  i {
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover {
+    background: var(--proj-glass-hover);
+  }
+}
+
+.project-details__head {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 28px 56px 20px 28px;
+  border-bottom: 1px solid var(--proj-line);
+
+  &-meta {
+    padding-top: 0.3rem;
+  }
+}
+
+.project-details__num {
+  font-weight: 900;
+  line-height: 0.9;
+  color: var(--proj-card-fg);
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.project-details__cat {
+  margin: 0 0 0.25rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  font-weight: 300;
+  color: var(--proj-card-fg);
+}
+
+.project-details__head h3 {
+  margin: 0;
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--proj-card-fg);
+}
+
+.project-details__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.project-details__section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.project-details__label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  opacity: 0.55;
+  color: var(--proj-card-fg);
+}
+
+.project-details__text {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.85;
+  color: var(--proj-card-fg);
+}
+
+.project-details__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  li {
+    position: relative;
+    padding-left: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    opacity: 0.85;
+    color: var(--proj-card-fg);
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.6em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.7;
+    }
+  }
+}
+
+.project-details__footer {
+  flex-shrink: 0;
+  padding: 16px 28px 20px;
+  border-top: 1px solid var(--proj-line);
+
+  .p-year {
+    color: var(--proj-card-fg);
   }
 }
