@@ -1,50 +1,57 @@
 import { ExperienceItem } from '../shared/models/portfolio.models';
 
+/**
+ * Données expérience — descriptions volontairement GÉNÉRIQUES :
+ * - intitulés de poste harmonisés (« Développeur FullStack ») ;
+ * - descriptions orientées responsabilités et valeur apportée ;
+ * - technologies regroupées dans `tech` et dans la section Stack du site.
+ */
+
 export const EXPERIENCE: ExperienceItem[] = [
   {
     period: 'Jan. 2026 — Jul. 2026',
-    role: { fr: 'Développeur logiciel junior', en: 'Software Developer Junior' },
+    role: { fr: 'Développeur FullStack', en: 'FullStack Developer' },
     company: { fr: 'ZettaByte — 100 % à distance', en: 'ZettaByte — 100% Remote' },
     desc: {
-      fr: 'Développeur logiciel junior sur des applications Java et Spring Boot, avec des contributions aux interfaces Angular et des travaux sur MongoDB dans un environnement 100 % à distance.',
-      en: 'Worked as a junior software developer on Java and Spring Boot applications, contributing to Angular interfaces and working with MongoDB in a fully remote environment.'
+      fr: 'Conception et développement d’applications web au sein d’une équipe distribuée : implémentation de nouvelles fonctionnalités, amélioration des interfaces et contribution à la fiabilité des produits en production.',
+      en: 'Designed and developed web applications within a distributed team: implemented new features, improved user interfaces and contributed to the reliability of production products.'
     },
-    tech: ['Java 21', 'Spring Boot 3.x', 'Angular 21', 'MongoDB']
+    tech: ['Node.js', 'Express.js', 'React', 'TypeScript', 'MongoDB']
   },
 
   {
     period: 'Jun. 2025 — Nov. 2025',
-    role: { fr: 'Développeur fullstack & mobile junior', en: 'Fullstack & Mobile Developer Junior' },
+    role: { fr: 'Développeur FullStack', en: 'FullStack Developer' },
     company: { fr: 'CNaPS Madagascar — Antananarivo', en: 'CNaPS Madagascar — Antananarivo' },
     desc: {
-      fr: 'Développement et maintenance d’applications Java et Spring, création d’interfaces Angular 12 et contributions à des applications mobiles avec Ionic, le tout avec Oracle 11g et JUnit.',
-      en: 'Developed and maintained Java and Spring applications, built Angular 12 interfaces and contributed to mobile applications with Ionic while working with Oracle 11g and JUnit.'
+      fr: 'Développement et maintenance d’applications métier : création d’écrans et de parcours utilisateurs, intégration de nouveaux services et participation active aux tests pour garantir la qualité des livraisons.',
+      en: 'Developed and maintained business applications: built screens and user journeys, integrated new services and took an active part in testing to ensure delivery quality.'
     },
     tech: [
-      'Java 8/11',
-      'Spring Framework',
-      'Angular 12',
-      'Ionic',
-      'Oracle 11g',
-      'JUnit 5',
+      'Node.js',
+      'Express.js',
+      'React',
+      'TypeScript',
+      'PostgreSQL',
+      'Jest',
       'Git',
-      'Maven'
+      'npm'
     ]
   },
 
   {
     period: 'Aug. 2024 — May 2025',
-    role: { fr: 'Développeur logiciel junior', en: 'Software Developer Junior' },
+    role: { fr: 'Développeur FullStack', en: 'FullStack Developer' },
     company: { fr: 'Slite — Paris, France · À distance', en: 'Slite — Paris, France · Remote' },
     desc: {
-      fr: 'Travaux sur des applications Java et Spring Boot, contributions aux interfaces Angular et aux fonctionnalités mobiles avec Ionic, et mise en œuvre de PostgreSQL, Redis, Docker, Kubernetes et Grafana en environnement distribué.',
-      en: 'Worked on Java and Spring Boot applications, contributed to Angular interfaces and mobile features with Ionic, and worked with PostgreSQL, Redis, Docker, Kubernetes and Grafana in a remote environment.'
+      fr: 'Participation au développement de produits utilisés par des équipes internationales : ajout de fonctionnalités, amélioration continue des interfaces et contribution à la stabilité des applications en environnement distribué.',
+      en: 'Contributed to products used by international teams: added features, continuously improved interfaces and helped keep applications stable in a distributed environment.'
     },
     tech: [
-      'Java 17',
-      'Spring Boot 3.x',
-      'Angular 21',
-      'Ionic',
+      'Node.js',
+      'Express.js',
+      'React',
+      'TypeScript',
       'PostgreSQL',
       'Redis',
       'Docker',

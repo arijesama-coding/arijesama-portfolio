@@ -25,7 +25,7 @@ export const TRANSLATIONS: Record<'fr' | 'en', Record<string, string>> = {
     'loader.sub': 'Initialisation de l’expérience numérique...',
 
     /* ---------- Hero ---------- */
-    'hero.eyebrow': 'Fullstack Java / Spring Boot / Angular',
+    'hero.eyebrow': 'Développeur Fullstack',
     'hero.tagline1': 'Je livre des systèmes qui fonctionnent.',
     'hero.tagline2': 'Pas seulement des fonctionnalités de démo.',
     'hero.title1': 'Un backend qui tient.',
@@ -41,9 +41,9 @@ export const TRANSLATIONS: Record<'fr' | 'en', Record<string, string>> = {
     'about.lead': 'Là où la technologie devient une solution, ',
     'about.leadAccent': 'pas une complication.',
     'about.copy':
-      'Je construis des applications complètes — Java et Spring Boot côté backend, Angular côté frontend, avec des données qui restent fiables et des conteneurs identiques en staging et en production. Je me soucie de l’architecture et du cycle complet, parce que livrer n’est que la moitié du travail. L’autre moitié, c’est faire en sorte que ça reste livré.',
+      'Je construis des applications complètes — Node.js côté backend, React côté frontend, avec des données qui restent fiables et des conteneurs identiques en staging et en production. Je me soucie de l’architecture et du cycle complet, parce que livrer n’est que la moitié du travail. L’autre moitié, c’est faire en sorte que ça reste livré.',
     'about.tag1.label': 'Fullstack par conception',
-    'about.tag1.sub': 'Java + Spring + Angular',
+    'about.tag1.sub': 'JS / TS + Node.js + React',
     'about.tag2.label': 'Pensée de bout en bout',
     'about.tag2.sub': 'Ticket → Production',
     'about.tag3.label': 'Des systèmes qui montent en charge',
@@ -152,7 +152,7 @@ export const TRANSLATIONS: Record<'fr' | 'en', Record<string, string>> = {
     'loader.sub': 'Initializing digital experience...',
 
     /* ---------- Hero ---------- */
-    'hero.eyebrow': 'Fullstack Java / Spring Boot / Angular',
+    'hero.eyebrow': 'Fullstack Developer',
     'hero.tagline1': 'I ship systems that work.',
     'hero.tagline2': 'Not just features that demo well.',
     'hero.title1': 'Backend that holds.',
@@ -168,9 +168,9 @@ export const TRANSLATIONS: Record<'fr' | 'en', Record<string, string>> = {
     'about.lead': 'Where technology becomes a solution, ',
     'about.leadAccent': 'not a complication.',
     'about.copy':
-      'I build full applications — Java and Spring Boot on the backend, Angular on the frontend, with data that stays reliable and containers that behave the same in staging and production. I care about architecture and the full cycle because shipping is only half the job. The other half is making sure it stays shipped.',
+      'I build full applications — Node.js & Express.js on the backend, React on the frontend, with data that stays reliable and containers that behave the same in staging and production. I care about architecture and the full cycle because shipping is only half the job. The other half is making sure it stays shipped.',
     'about.tag1.label': 'Fullstack by design',
-    'about.tag1.sub': 'Java + Spring + Angular',
+    'about.tag1.sub': 'JS / TS + Node.js + React',
     'about.tag2.label': 'End-to-end thinking',
     'about.tag2.sub': 'Ticket → Production',
     'about.tag3.label': 'Systems that scale',

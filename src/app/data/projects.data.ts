@@ -1,56 +1,67 @@
 import { ProjectItem } from '../shared/models/portfolio.models';
 
+/**
+ * Données projets — volontairement GÉNÉRIQUES :
+ * - descriptions / objectifs / fonctionnalités orientés contexte, valeur
+ *   et responsabilités (aucune mention de stack technique) ;
+ * - liste de rôles harmonisée et réutilisable d'un projet à l'autre ;
+ * - les technologies restent confinées à la section Stack.
+ */
+
+/** Rôles génériques partagés par tous les projets (cohérence globale). */
+const COMMON_ROLES = [
+  {
+    fr: 'Conception et développement des fonctionnalités clés de la plateforme',
+    en: 'Designed and developed the platform’s key features'
+  },
+  {
+    fr: 'Amélioration continue des interfaces et de l’expérience utilisateur',
+    en: 'Continuously improved interfaces and user experience'
+  },
+  {
+    fr: 'Participation aux choix techniques et à l’évolution de l’architecture',
+    en: 'Contributed to technical decisions and architecture evolution'
+  },
+  {
+    fr: 'Fiabilisation, tests et accompagnement des mises en production',
+    en: 'Ensured reliability, testing and production release support'
+  }
+];
+
 export const PROJECTS: ProjectItem[] = [
   {
     num: '01',
     cat: { fr: 'Plateforme de gestion', en: 'Management Platform' },
     title: 'JobFlow',
     desc: {
-      fr: 'Plateforme web conçue pour centraliser la gestion des chantiers, la planification, la coordination des équipes, les workflows et les activités opérationnelles.',
-      en: 'Web platform designed to centralize job management, scheduling, team coordination, workflows and operational activities.'
+      fr: 'Plateforme conçue pour centraliser la planification et le suivi des activités terrain : un espace unique qui fiabilise la coordination des équipes et la visibilité sur les opérations.',
+      en: 'A platform designed to centralize field activity planning and tracking: one workspace that makes team coordination and operational visibility more reliable.'
     },
     images: [
       'assets/projects/jobflow-hero.png'
     ],
-    role: [
-      {
-        fr: 'Développement et maintenance des fonctionnalités centrales de la plateforme',
-        en: 'Developed and maintained core platform features'
-      },
-      {
-        fr: 'Création et amélioration des interfaces web et des parcours utilisateurs',
-        en: 'Built and improved web interfaces and user workflows'
-      },
-      {
-        fr: 'Conception et intégration des services applicatifs et des API',
-        en: 'Designed and integrated application services and APIs'
-      },
-      {
-        fr: 'Travaux sur la gestion des données et la fiabilité applicative',
-        en: 'Worked on data management and application reliability'
-      }
-    ],
+    role: COMMON_ROLES,
     impact: {
       objective: {
-        fr: 'Les équipes terrain géraient leurs chantiers via des tableurs et des échanges informels, ce qui rendait la planification difficile à suivre et créait des pertes d’information. JobFlow centralise ces activités dans une plateforme unique pour fiabiliser la coordination et la visibilité sur chaque chantier.',
-        en: 'Field teams were managing jobs through spreadsheets and informal exchanges, which made scheduling hard to track and caused information to get lost. JobFlow centralizes these activities into a single platform to make coordination and visibility over every job more reliable.'
+        fr: 'Les équipes suivaient leurs activités avec des outils dispersés, ce qui compliquait le pilotage et générait des pertes d’information. L’objectif était de réunir ces pratiques dans une plateforme unique afin d’améliorer la coordination, le suivi et la prise de décision.',
+        en: 'Teams tracked their work across scattered tools, making oversight difficult and causing information to get lost. The goal was to bring these practices together into one platform to improve coordination, follow-up and decision-making.'
       },
       features: [
         {
-          fr: 'Planification des chantiers avec vue calendrier et affectation des équipes',
-          en: 'Job scheduling with calendar view and team assignment'
+          fr: 'Planification et suivi centralisés des activités',
+          en: 'Centralized planning and tracking of activities'
         },
         {
-          fr: 'Suivi en temps réel de l’avancement et des tâches opérationnelles',
-          en: 'Real-time tracking of progress and operational tasks'
+          fr: 'Visibilité en temps réel sur l’avancement des opérations',
+          en: 'Real-time visibility over operational progress'
         },
         {
-          fr: 'Workflows configurables pour standardiser les processus métier',
-          en: 'Configurable workflows to standardize business processes'
+          fr: 'Standardisation des processus internes',
+          en: 'Standardized internal processes'
         },
         {
-          fr: 'Tableaux de bord pour piloter l’activité multi-chantiers',
-          en: 'Dashboards to manage activity across multiple jobs'
+          fr: 'Tableaux de bord pour piloter l’activité dans son ensemble',
+          en: 'Dashboards to oversee activity as a whole'
         }
       ]
     },
@@ -64,49 +75,32 @@ export const PROJECTS: ProjectItem[] = [
     cat: { fr: 'Plateforme de gestion', en: 'Management Platform' },
     title: 'Gestion CCL',
     desc: {
-      fr: 'Plateforme de gestion développée pour le Complexe Culturel et de Loisirs Vontovorona, axée sur les processus métier, la gestion des données et les activités opérationnelles.',
-      en: 'Management platform developed for the Complexe Culturel et de Loisirs Vontovorona, focused on business workflows, data management and operational activities.'
+      fr: 'Solution de gestion développée pour un complexe culturel et de loisirs : elle regroupe les réservations, les activités et les ressources dans une plateforme unique au service des équipes.',
+      en: 'A management solution built for a cultural and leisure complex: it brings bookings, activities and resources together in a single platform serving on-site teams.'
     },
     images: [],
-    role: [
-      {
-        fr: 'Développement et maintenance des fonctionnalités métier principales',
-        en: 'Developed and maintained core business features'
-      },
-      {
-        fr: 'Création et amélioration des interfaces web',
-        en: 'Built and improved web interfaces'
-      },
-      {
-        fr: 'Conception et intégration des services applicatifs et des API',
-        en: 'Designed and integrated application services and APIs'
-      },
-      {
-        fr: 'Travaux sur la gestion des données, les tests et la fiabilité applicative',
-        en: 'Worked on data management, testing and application reliability'
-      }
-    ],
+    role: COMMON_ROLES,
     impact: {
       objective: {
-        fr: 'Le complexe gérait ses réservations, ses activités et ses ressources via des processus manuels dispersés entre plusieurs services. La plateforme regroupe ces opérations pour simplifier le suivi quotidien et réduire les erreurs de coordination entre équipes.',
-        en: 'The venue managed bookings, activities and resources through manual processes spread across several departments. The platform brings these operations together to simplify daily follow-up and reduce coordination errors between teams.'
+        fr: 'Les opérations étaient gérées manuellement et séparées entre plusieurs services, générant erreurs et pertes de temps. L’objectif était de centraliser ces processus pour simplifier le suivi quotidien et fiabiliser la coordination entre équipes.',
+        en: 'Operations were managed manually and split across departments, leading to errors and wasted time. The goal was to centralize these processes to simplify daily follow-up and make coordination between teams more reliable.'
       },
       features: [
         {
-          fr: 'Gestion centralisée des réservations et des ressources du complexe',
-          en: 'Centralized management of bookings and venue resources'
+          fr: 'Gestion centralisée des réservations et des ressources',
+          en: 'Centralized management of bookings and resources'
         },
         {
-          fr: 'Suivi des activités et des processus métier internes',
-          en: 'Tracking of activities and internal business processes'
+          fr: 'Suivi des activités et des processus internes',
+          en: 'Tracking of activities and internal processes'
         },
         {
-          fr: 'Gestion des données avec contrôles de cohérence et de fiabilité',
-          en: 'Data management with consistency and reliability checks'
+          fr: 'Qualité et cohérence renforcées des données',
+          en: 'Improved data quality and consistency'
         },
         {
-          fr: 'Interfaces dédiées aux différents rôles opérationnels',
-          en: 'Dedicated interfaces for different operational roles'
+          fr: 'Interfaces adaptées aux différents rôles opérationnels',
+          en: 'Interfaces tailored to different operational roles'
         }
       ]
     },
@@ -120,51 +114,34 @@ export const PROJECTS: ProjectItem[] = [
     cat: { fr: 'Plateforme SaaS', en: 'SaaS Platform' },
     title: 'InvoiceNinja',
     desc: {
-      fr: 'Plateforme métier SaaS centrée sur la facturation, les paiements, la gestion de projets, la gestion clients et les processus de facturation.',
-      en: 'SaaS business platform focused on invoicing, payments, project management, client management and billing workflows.'
+      fr: 'Plateforme métier en ligne qui permet aux indépendants et aux petites entreprises de centraliser leur gestion client, leur suivi administratif et l’organisation de leurs projets.',
+      en: 'An online business platform that helps freelancers and small businesses centralize client management, administrative tracking and day-to-day project organization.'
     },
     images: [
       'assets/projects/invoiceninja-hero.png'
     ],
-    role: [
-      {
-        fr: 'Développement et maintenance des fonctionnalités orientées métier',
-        en: 'Developed and maintained business-oriented platform features'
-      },
-      {
-        fr: 'Création et amélioration des interfaces web et des parcours utilisateurs',
-        en: 'Built and improved web interfaces and user workflows'
-      },
-      {
-        fr: 'Travaux sur la facturation, les paiements et les processus métier',
-        en: 'Worked on billing, invoicing and business processes'
-      },
-      {
-        fr: 'Contribution à la fiabilité applicative et à la gestion des données',
-        en: 'Contributed to application reliability and data management'
-      }
-    ],
+    role: COMMON_ROLES,
     impact: {
       objective: {
-        fr: 'Les indépendants et petites entreprises avaient besoin d’un outil unique pour facturer leurs clients, suivre les paiements et gérer leurs projets sans jongler entre plusieurs logiciels. InvoiceNinja répond à ce besoin en réunissant facturation, paiements et gestion de projets dans une seule plateforme SaaS.',
-        en: 'Freelancers and small businesses needed a single tool to invoice clients, track payments and manage projects without juggling several separate tools. InvoiceNinja addresses this by bringing invoicing, payments and project management together in one SaaS platform.'
+        fr: 'Les utilisateurs jonglaient avec plusieurs outils pour gérer leurs clients, leur activité et leurs documents. L’objectif était d’offrir une solution unique qui fait gagner du temps et donne une vision claire de l’ensemble de l’activité.',
+        en: 'Users juggled several tools to manage their clients, activity and documents. The goal was to provide a single solution that saves time and gives a clear overview of the entire business.'
       },
       features: [
         {
-          fr: 'Création et envoi de factures et devis personnalisables',
-          en: 'Creation and delivery of customizable invoices and quotes'
+          fr: 'Création et suivi centralisés des documents clients',
+          en: 'Centralized creation and tracking of client documents'
         },
         {
-          fr: 'Suivi des paiements et intégration de moyens de paiement en ligne',
-          en: 'Payment tracking and integration of online payment methods'
+          fr: 'Organisation et suivi des projets clients',
+          en: 'Organization and tracking of client projects'
         },
         {
-          fr: 'Gestion de projets liée aux clients et à la facturation',
-          en: 'Project management linked to clients and billing'
-        },
-        {
-          fr: 'Gestion clients avec historique et suivi des échanges',
+          fr: 'Gestion des clients avec historique et suivi des échanges',
           en: 'Client management with history and interaction tracking'
+        },
+        {
+          fr: 'Vue d’ensemble de l’activité grâce aux tableaux de bord',
+          en: 'Business-wide overview through dashboards'
         }
       ]
     },
@@ -178,51 +155,34 @@ export const PROJECTS: ProjectItem[] = [
     cat: { fr: 'Plateforme de signature électronique', en: 'E-Signature Platform' },
     title: 'Documenso',
     desc: {
-      fr: 'Plateforme de signature de documents centrée sur les signatures électroniques, les workflows documentaires, les modèles, les destinataires et les processus d’approbation numérique.',
-      en: 'Document signing platform focused on electronic signatures, document workflows, templates, recipients and digital approval processes.'
+      fr: 'Plateforme qui digitalise les processus de validation documentaire : du partage des documents au suivi des approbations, le parcours complet est simplifié et traçable.',
+      en: 'A platform that digitizes document approval processes: from sharing documents to tracking approvals, the whole journey is simplified and traceable.'
     },
     images: [
       'assets/projects/documenso-hero.png'
     ],
-    role: [
-      {
-        fr: 'Développement et maintenance des workflows documentaires',
-        en: 'Developed and maintained document workflow features'
-      },
-      {
-        fr: 'Création et amélioration des interfaces et de l’expérience de signature',
-        en: 'Built and improved user interfaces and signing experiences'
-      },
-      {
-        fr: 'Travaux sur la gestion documentaire et les processus métier',
-        en: 'Worked on document management and business processes'
-      },
-      {
-        fr: 'Contribution à la fiabilité applicative et à la gestion des données',
-        en: 'Contributed to application reliability and data management'
-      }
-    ],
+    role: COMMON_ROLES,
     impact: {
       objective: {
-        fr: 'Faire signer et valider des documents papier ralentissait les processus d’approbation et compliquait le suivi des destinataires. Documenso digitalise l’ensemble du parcours de signature pour accélérer les approbations tout en gardant une traçabilité claire.',
-        en: 'Signing and validating paper documents slowed down approval processes and made tracking recipients difficult. Documenso digitizes the entire signing journey to speed up approvals while keeping clear traceability.'
+        fr: 'Les validations papier ralentissaient les processus et rendaient le suivi des approbations difficile. L’objectif était de dématérialiser ce parcours pour accélérer les validations tout en garantissant une traçabilité claire.',
+        en: 'Paper-based approvals slowed processes down and made sign-off tracking difficult. The goal was to digitize this journey to speed up approvals while keeping clear traceability.'
       },
       features: [
         {
-          fr: 'Signature électronique de documents avec gestion des destinataires',
-          en: 'Electronic document signing with recipient management'
+          fr: 'Validation dématérialisée des documents avec gestion des participants',
+          en: 'Paperless document approval with participant management'
         },
         {
-          fr: 'Modèles réutilisables pour accélérer la création de documents',
-          en: 'Reusable templates to speed up document creation'
+          fr: 'Modèles réutilisables pour accélérer la préparation des documents',
+          en: 'Reusable templates to speed up document preparation'
         },
         {
-          fr: 'Workflows d’approbation avec suivi de statut en temps réel',
-          en: 'Approval workflows with real-time status tracking'
+          fr: 'Suivi du statut des validations en temps réel',
+          en: 'Real-time status tracking of approvals'
         },
         {
-          fr: 'Historique et traçabilité complète des signatures',
-          en: 'Full history and traceability of signatures'
+          fr: 'Traçabilité complète de chaque étape du processus',
+          en: 'Complete traceability of every process step'
         }
       ]
     },
