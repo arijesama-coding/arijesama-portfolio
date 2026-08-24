@@ -5,8 +5,8 @@ export const WHY: WhyItem[] = [
     num: '01',
     title: { fr: 'Ingénierie', en: 'Engineering' },
     desc: {
-      fr: 'Une architecture Java & Angular solide — propre, scalable et pensée pour des applications réelles.',
-      en: 'Solid Java & Angular architecture — clean, scalable and designed for real-world applications.'
+      fr: 'Une architecture Node.js & React solide — propre, scalable et pensée pour des applications réelles.',
+      en: 'Solid Node.js & React architecture — clean, scalable and designed for real-world applications.'
     }
   },
   {
