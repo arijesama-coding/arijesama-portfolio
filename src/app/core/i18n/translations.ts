@@ -12,7 +12,7 @@ export const TRANSLATIONS: Record<'fr' | 'en', Record<string, string>> = {
     'nav.experience': 'Expérience',
     'nav.contact': 'Contact',
     'nav.hire': 'Me recruter',
-    'nav.subtitle': 'Développeur Fullstack',
+    'nav.subtitle': 'Développeur Backend & Mobile',
     'nav.menu': 'Ouvrir le menu',
 
     /* ---------- Controls ---------- */
@@ -25,12 +25,12 @@ export const TRANSLATIONS: Record<'fr' | 'en', Record<string, string>> = {
     'loader.sub': 'Initialisation de l’expérience numérique...',
 
     /* ---------- Hero ---------- */
-    'hero.eyebrow': 'Fullstack Java / Spring Boot / Angular',
-    'hero.tagline1': 'Je livre des systèmes qui fonctionnent.',
+    'hero.eyebrow': 'Mobile React Native / Flutter / Go / Spring Boot',
+    'hero.tagline1': 'Je livre des applications mobiles qui fonctionnent.',
     'hero.tagline2': 'Pas seulement des fonctionnalités de démo.',
-    'hero.title1': 'Un backend qui tient.',
-    'hero.title2': 'Un frontend qui respire.',
-    'hero.title3': 'Un déploiement sans panique.',
+    'hero.title1': 'Des alertes en 3 secondes.',
+    'hero.title2': 'Une app qui reste fluide.',
+    'hero.title3': 'Même hors ligne.',
     'hero.work': 'Voir les projets',
     'hero.resume': 'Voir le CV',
     'hero.resume.link': 'CV_ARIJESA_FR.pdf',
@@ -41,20 +41,20 @@ export const TRANSLATIONS: Record<'fr' | 'en', Record<string, string>> = {
     'about.lead': 'Là où la technologie devient une solution, ',
     'about.leadAccent': 'pas une complication.',
     'about.copy':
-      'Je construis des applications complètes — Java et Spring Boot côté backend, Angular côté frontend, avec des données qui restent fiables et des conteneurs identiques en staging et en production. Je me soucie de l’architecture et du cycle complet, parce que livrer n’est que la moitié du travail. L’autre moitié, c’est faire en sorte que ça reste livré.',
-    'about.tag1.label': 'Fullstack par conception',
-    'about.tag1.sub': 'Java + Spring + Angular',
+      'Je construis des applications mobiles complètes — React Native, Flutter et natif Android/iOS côté mobile, Go, Java Spring Boot et Python côté backend, avec du temps réel, des notifications push et un mode hors-ligne qui reste fiable. Je me soucie de la performance, des tests et du cycle complet, parce que livrer n’est que la moitié du travail. L’autre moitié, c’est faire en sorte que ça reste livré.',
+    'about.tag1.label': 'Mobile par conception',
+    'about.tag1.sub': 'React Native + Flutter + natif',
     'about.tag2.label': 'Pensée de bout en bout',
-    'about.tag2.sub': 'Ticket → Production',
-    'about.tag3.label': 'Des systèmes qui montent en charge',
-    'about.tag3.sub': 'Sans drame',
+    'about.tag2.sub': 'Maquette → Store',
+    'about.tag3.label': 'Des apps qui tiennent la charge',
+    'about.tag3.sub': 'Sans crash',
     'about.tag4.label': 'Mon futur compte',
     'about.tag4.sub': 'Le code propre est une assurance-vie',
 
     /* ---------- Stack ---------- */
     'stack.eyebrow': 'La stack technique',
     'stack.title':
-      'Les outils avec lesquels je transforme des idées en systèmes prêts pour la production.',
+      'Les outils avec lesquels je transforme des besoins terrain en applications mobiles prêtes pour la production.',
     'cat.language': 'Langage',
     'cat.backend': 'Backend',
     'cat.frontend': 'Frontend',
@@ -67,7 +67,7 @@ export const TRANSLATIONS: Record<'fr' | 'en', Record<string, string>> = {
 
     /* ---------- Projects ---------- */
     'projects.eyebrow': 'Réalisations sélectionnées',
-    'projects.title': 'Une vitrine des systèmes que j’ai conçus.',
+    'projects.title': 'Une vitrine des applications que j’ai conçues.',
     'projects.visitWebsite': 'Visiter le site',
     'projects.private': 'Projet privé',
     'projects.privateHint': 'Projet privé — étude de cas indisponible',
@@ -85,13 +85,13 @@ export const TRANSLATIONS: Record<'fr' | 'en', Record<string, string>> = {
 
     /* ---------- Experience ---------- */
     'exp.eyebrow': 'Expérience d’ingénierie',
-    'exp.title': 'Une chronologie de systèmes bâtis pour monter en charge.',
+    'exp.title': 'Une chronologie d’applications bâties pour tenir la charge.',
 
     /* ---------- Showroom ---------- */
     'showroom.eyebrow': 'Le showroom numérique',
-    'showroom.title': 'De vrais systèmes. De vraies contraintes. Une vraie production.',
+    'showroom.title': 'De vraies applications. De vraies contraintes. De vrais utilisateurs.',
     'showroom.desc':
-      'Chaque projet ici a été conçu pour survivre au contact d’utilisateurs réels, de données réelles et de vrais déploiements un vendredi soir.',
+      'Chaque projet ici a été conçu pour survivre au contact d’utilisateurs réels, de réseaux instables et de vraies mises en production sur les stores.',
 
     /* ---------- Why ---------- */
     'why.eyebrow': 'Pourquoi travailler avec moi',
@@ -106,7 +106,7 @@ export const TRANSLATIONS: Record<'fr' | 'en', Record<string, string>> = {
     'contact.eyebrow': 'Contact',
     'contact.title': 'Discutons.',
     'contact.desc':
-      'Produit complet, audit technique, ou un système qui doit grandir sans casser. Dites-moi ce que vous avez entre les mains.',
+      'Application mobile, audit technique, ou un système temps réel qui doit grandir sans casser. Dites-moi ce que vous avez entre les mains.',
     'contact.remote': 'Disponible en télétravail partout dans le monde ou en présentiel à Madagascar',
     'contact.name': 'Votre nom',
     'contact.email': 'Votre E-mail',
@@ -123,7 +123,7 @@ export const TRANSLATIONS: Record<'fr' | 'en', Record<string, string>> = {
     'contact.closeNotification': 'Fermer la notification',
 
     /* ---------- Footer ---------- */
-    'footer.tagline': 'Construire des expériences numériques avec technologie et précision.',
+    'footer.tagline': 'Construire des expériences mobiles avec technologie et précision.',
     'footer.navTitle': 'Navigation',
     'footer.connectTitle': 'Réseaux',
     'footer.rights': '© 2026 arijesama.dev — Tous droits réservés.',
@@ -139,7 +139,7 @@ export const TRANSLATIONS: Record<'fr' | 'en', Record<string, string>> = {
     'nav.experience': 'Experience',
     'nav.contact': 'Contact',
     'nav.hire': 'Hire me now',
-    'nav.subtitle': 'Fullstack Developer',
+    'nav.subtitle': 'Backend & Mobile Developer',
     'nav.menu': 'Open menu',
 
     /* ---------- Controls ---------- */
@@ -152,12 +152,12 @@ export const TRANSLATIONS: Record<'fr' | 'en', Record<string, string>> = {
     'loader.sub': 'Initializing digital experience...',
 
     /* ---------- Hero ---------- */
-    'hero.eyebrow': 'Fullstack Java / Spring Boot / Angular',
-    'hero.tagline1': 'I ship systems that work.',
+    'hero.eyebrow': 'Mobile React Native / Flutter / Go / Spring Boot',
+    'hero.tagline1': 'I ship mobile apps that work.',
     'hero.tagline2': 'Not just features that demo well.',
-    'hero.title1': 'Backend that holds.',
-    'hero.title2': 'Frontend that breathes.',
-    'hero.title3': 'Deployment that doesn’t panic.',
+    'hero.title1': 'Alerts in 3 seconds.',
+    'hero.title2': 'An app that stays smooth.',
+    'hero.title3': 'Even offline.',
     'hero.work': 'See the work',
     'hero.resume': 'View Resume',
     'hero.resume.link': 'CV_ARIJESA_EN.pdf',
@@ -168,19 +168,19 @@ export const TRANSLATIONS: Record<'fr' | 'en', Record<string, string>> = {
     'about.lead': 'Where technology becomes a solution, ',
     'about.leadAccent': 'not a complication.',
     'about.copy':
-      'I build full applications — Java and Spring Boot on the backend, Angular on the frontend, with data that stays reliable and containers that behave the same in staging and production. I care about architecture and the full cycle because shipping is only half the job. The other half is making sure it stays shipped.',
-    'about.tag1.label': 'Fullstack by design',
-    'about.tag1.sub': 'Java + Spring + Angular',
+      'I build complete mobile applications — React Native, Flutter and native Android/iOS on the mobile side, Go, Java Spring Boot and Python on the backend, with real-time updates, push notifications and an offline mode that stays reliable. I care about performance, testing and the full cycle because shipping is only half the job. The other half is making sure it stays shipped.',
+    'about.tag1.label': 'Mobile by design',
+    'about.tag1.sub': 'React Native + Flutter + native',
     'about.tag2.label': 'End-to-end thinking',
-    'about.tag2.sub': 'Ticket → Production',
-    'about.tag3.label': 'Systems that scale',
-    'about.tag3.sub': 'Without drama',
+    'about.tag2.sub': 'Mockup → Store',
+    'about.tag3.label': 'Apps that hold up',
+    'about.tag3.sub': 'Without crashes',
     'about.tag4.label': 'Future me matters',
     'about.tag4.sub': 'Clean code is self-defense',
 
     /* ---------- Stack ---------- */
     'stack.eyebrow': 'The Technology Stack',
-    'stack.title': 'Tools I use to turn ideas into production-ready systems.',
+    'stack.title': 'Tools I use to turn field needs into production-ready mobile apps.',
     'cat.language': 'Language',
     'cat.backend': 'Backend',
     'cat.frontend': 'Frontend',
@@ -193,7 +193,7 @@ export const TRANSLATIONS: Record<'fr' | 'en', Record<string, string>> = {
 
     /* ---------- Projects ---------- */
     'projects.eyebrow': 'Selected Work',
-    'projects.title': 'A showroom of systems I’ve engineered.',
+    'projects.title': 'A showroom of apps I’ve engineered.',
     'projects.visitWebsite': 'Visit Website',
     'projects.private': 'Private Project',
     'projects.privateHint': 'Private project — case study unavailable',
@@ -211,13 +211,13 @@ export const TRANSLATIONS: Record<'fr' | 'en', Record<string, string>> = {
 
     /* ---------- Experience ---------- */
     'exp.eyebrow': 'Engineering Experience',
-    'exp.title': 'A timeline of building things that scale.',
+    'exp.title': 'A timeline of building apps that hold up.',
 
     /* ---------- Showroom ---------- */
     'showroom.eyebrow': 'The Digital Showroom',
-    'showroom.title': 'Real systems. Real constraints. Real production.',
+    'showroom.title': 'Real apps. Real constraints. Real users.',
     'showroom.desc':
-      'Every project here was built to survive contact with actual users, actual data, and actual Friday deploys.',
+      'Every project here was built to survive contact with actual users, unstable networks, and actual store releases.',
 
     /* ---------- Why ---------- */
     'why.eyebrow': 'Why Work With Me',
@@ -232,7 +232,7 @@ export const TRANSLATIONS: Record<'fr' | 'en', Record<string, string>> = {
     'contact.eyebrow': 'Contact',
     'contact.title': 'Let’s talk.',
     'contact.desc':
-      'Full product build, technical audit, or a system that needs to grow without breaking. Tell me what you’re dealing with.',
+      'Mobile app, technical audit, or a real-time system that needs to grow without breaking. Tell me what you’re dealing with.',
     'contact.remote': 'Available worldwide remotely or on-site in Madagascar',
     'contact.name': 'Your Name',
     'contact.email': 'Your Email',
@@ -249,7 +249,7 @@ export const TRANSLATIONS: Record<'fr' | 'en', Record<string, string>> = {
     'contact.closeNotification': 'Close notification',
 
     /* ---------- Footer ---------- */
-    'footer.tagline': 'Building digital experiences with technology and precision.',
+    'footer.tagline': 'Building mobile experiences with technology and precision.',
     'footer.navTitle': 'Navigation',
     'footer.connectTitle': 'Connect',
     'footer.rights': '© 2026 arijesama.dev — All rights reserved.',

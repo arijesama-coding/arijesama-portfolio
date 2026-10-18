@@ -16,112 +16,112 @@ export const DEFAULT_TECH_META: TechMeta = {
 };
 
 export const TECH_META: Record<string, TechMeta> = {
-  Angular: {
-    color: '#DD0031',
-    points: [
-      { fr: 'Applications web modernes et structurées', en: 'Modern, structured web applications' },
-      { fr: 'Architecture modulaire avec composants réutilisables', en: 'Modular architecture with reusable components' },
-      { fr: 'Interfaces dynamiques construites avec TypeScript et RxJS', en: 'Dynamic interfaces built with TypeScript and RxJS' },
-      { fr: 'Applications métier maintenables et scalables', en: 'Maintainable, scalable business applications' }
-    ]
-  },
-  Java: {
-    color: '#EA2D2E',
-    points: [
-      { fr: 'Applications backend robustes et scalables', en: 'Robust, scalable backend applications' },
-      { fr: 'Conception orientée objet et design patterns éprouvés', en: 'Object-oriented design and proven design patterns' },
-      { fr: 'Intégration Spring / JVM en production', en: 'Spring / JVM integration in production' },
-      { fr: 'Performance, concurrence et maintenabilité sur le long terme', en: 'Performance, concurrency and long-term maintainability' }
-    ]
-  },
-  Spring: {
-    color: '#6DB33F',
-    points: [
-      { fr: 'Services backend et API prêts pour la production', en: 'Production-grade backend services and APIs' },
-      { fr: 'Injection de dépendances pour un code propre et testable', en: 'Dependency injection for clean, testable code' },
-      { fr: 'Spring Boot pour des livraisons rapides et fiables', en: 'Spring Boot for fast, reliable delivery' },
-      { fr: 'Sécurité, accès aux données et microservices à l’échelle', en: 'Security, data access and microservices at scale' }
-    ]
-  },
-  React: {
+  'React Native': {
     color: '#61DAFB',
     points: [
-      { fr: 'Interfaces utilisateur interactives et component-driven', en: 'Interactive, component-driven user interfaces' },
-      { fr: 'UI réutilisable construite autour du DOM virtuel', en: 'Reusable UI built around a virtual DOM' },
-      { fr: 'Écosystème riche pour la gestion d’état et des données', en: 'Rich ecosystem for state and data management' },
-      { fr: 'Itération rapide sur des produits front-end modernes', en: 'Fast iteration on modern front-end products' }
+      { fr: 'Applications Android, iOS et web depuis une seule base de code', en: 'Android, iOS and web apps from a single codebase' },
+      { fr: '90 % de code partagé et une interface fluide à 60 fps', en: '90% shared code and smooth 60 fps interfaces' },
+      { fr: 'Alarmes, événements et ticketing en temps réel', en: 'Real-time alarms, events and ticketing' },
+      { fr: 'Tests Detox/Jest et releases Fastlane via CI/CD', en: 'Detox/Jest tests and Fastlane releases through CI/CD' }
+    ]
+  },
+  Flutter: {
+    color: '#02569B',
+    points: [
+      { fr: 'Applications multiplateformes construites avec Dart', en: 'Cross-platform apps built with Dart' },
+      { fr: '4 applications livrées de la maquette à la publication', en: '4 apps shipped from mockup to store release' },
+      { fr: 'Interfaces fidèles aux maquettes UI/UX', en: 'Interfaces faithful to UI/UX mockups' },
+      { fr: 'Gestion d’état avec Bloc pour un code maintenable', en: 'State management with Bloc for maintainable code' }
+    ]
+  },
+  Kotlin: {
+    color: '#7F52FF',
+    points: [
+      { fr: 'Applications Android natives performantes', en: 'High-performance native Android apps' },
+      { fr: 'Écrans développés à partir de maquettes Figma', en: 'Screens built from Figma mockups' },
+      { fr: 'Persistance locale avec Room et tests unitaires', en: 'Local persistence with Room and unit tests' },
+      { fr: 'Profiling et correction des crashs en production', en: 'Profiling and crash fixing in production' }
+    ]
+  },
+  Swift: {
+    color: '#F05138',
+    points: [
+      { fr: 'Applications iOS natives', en: 'Native iOS applications' },
+      { fr: 'Notifications push via APNs', en: 'Push notifications through APNs' },
+      { fr: 'Tests avec XCTest pour sécuriser les livraisons', en: 'XCTest testing to secure releases' },
+      { fr: 'Expérience cohérente avec la version Android', en: 'Experience consistent with the Android version' }
     ]
   },
   TypeScript: {
     color: '#3178C6',
     points: [
-      { fr: 'Du JavaScript typé, même à grande échelle', en: 'Type-safe JavaScript at scale' },
+      { fr: 'Du JavaScript typé pour des applications React Native fiables', en: 'Type-safe JavaScript for reliable React Native apps' },
       { fr: 'Moins de bugs runtime grâce à l’analyse statique', en: 'Fewer runtime bugs through static analysis' },
-      { fr: 'Des contrats plus clairs dans les grandes bases de code', en: 'Clearer contracts across large codebases' },
+      { fr: 'Des contrats clairs entre l’application et les API', en: 'Clear contracts between the app and the APIs' },
       { fr: 'Meilleur outillage, autocomplétion et refactoring', en: 'Better tooling, autocompletion and refactoring' }
     ]
   },
-  JavaScript: {
-    color: '#F7DF1E',
+  Go: {
+    color: '#00ADD8',
     points: [
-      { fr: 'Le langage central de la plateforme web', en: 'The core language of the web platform' },
-      { fr: 'Comportements front-end dynamiques et interactifs', en: 'Dynamic, interactive front-end behavior' },
-      { fr: 'Fonctionne côté navigateur comme côté Node.js', en: 'Runs across browser and Node.js environments' },
-      { fr: 'La colle entre UI, API et logique métier', en: 'Glue between UI, APIs and business logic' }
+      { fr: 'Service live temps réel basé sur les WebSockets', en: 'Real-time live service built on WebSockets' },
+      { fr: '10 000+ connexions simultanées avec moins de 100 ms de latence', en: '10,000+ simultaneous connections with under 100 ms latency' },
+      { fr: 'Concurrence légère et efficace avec les goroutines', en: 'Lightweight, efficient concurrency with goroutines' },
+      { fr: 'Alertes livrées aux applications mobiles en quelques secondes', en: 'Alerts delivered to mobile apps within seconds' }
     ]
   },
-  Docker: {
-    color: '#2496ED',
+  Spring: {
+    color: '#6DB33F',
     points: [
-      { fr: 'Des environnements cohérents du dev à la production', en: 'Consistent environments from dev to production' },
-      { fr: 'Conteneurs applicatifs isolés et reproductibles', en: 'Isolated, reproducible application containers' },
-      { fr: 'Déploiement et montée en charge simplifiés', en: 'Simplified deployment and scaling' },
-      { fr: 'Socle des pipelines CI/CD', en: 'Foundation for CI/CD pipelines' }
+      { fr: 'API REST sécurisées pour les applications mobiles (OAuth2/JWT)', en: 'Secure REST APIs for mobile apps (OAuth2/JWT)' },
+      { fr: '1 200 req/s avec un temps de réponse p95 inférieur à 120 ms', en: '1,200 req/s with p95 response time under 120 ms' },
+      { fr: 'Spring Boot pour des livraisons rapides et fiables', en: 'Spring Boot for fast, reliable delivery' },
+      { fr: 'Dialogue efficace avec les équipes backend', en: 'Effective collaboration with backend teams' }
     ]
   },
-  PostgreSQL: {
-    color: '#336791',
+  Python: {
+    color: '#3776AB',
     points: [
-      { fr: 'Stockage relationnel fiable', en: 'Reliable relational data storage' },
-      { fr: 'Requêtes complexes avec une forte intégrité des données', en: 'Complex queries with strong data integrity' },
-      { fr: 'Passe du prototype aux charges de production', en: 'Scales from prototypes to production workloads' },
-      { fr: 'Épine dorsale éprouvée des applications critiques', en: 'Trusted backbone for critical applications' }
+      { fr: 'Modèle d’IA de scoring pour prioriser les alertes', en: 'AI scoring model to prioritize alerts' },
+      { fr: '-30 % de fausses alertes', en: '-30% false alerts' },
+      { fr: 'Traitement de données et machine learning', en: 'Data processing and machine learning' },
+      { fr: 'Scripts d’automatisation pour les équipes', en: 'Automation scripts for teams' }
     ]
   },
-  Redis: {
-    color: '#DC382D',
+  SQLite: {
+    color: '#003B57',
     points: [
-      { fr: 'Cache en mémoire ultra-rapide', en: 'High-speed in-memory caching' },
-      { fr: 'Stockage de sessions et rate limiting', en: 'Session storage and rate limiting' },
-      { fr: 'Pub/sub et flux de données temps réel', en: 'Pub/sub and real-time data flows' },
-      { fr: 'Réduction de la charge des bases principales', en: 'Reduced load on primary databases' }
+      { fr: 'Stockage local pour un mode hors-ligne fiable', en: 'Local storage for a reliable offline mode' },
+      { fr: 'Synchronisation des données au retour du réseau', en: 'Data synchronization when the network returns' },
+      { fr: 'Cache pour des écrans instantanés', en: 'Caching for instant screens' },
+      { fr: 'Base légère embarquée dans l’application', en: 'Lightweight database embedded in the app' }
     ]
   },
-  Ionic: {
-    color: '#4E8EF7',
+  Firebase: {
+    color: '#FFCA28',
     points: [
-      { fr: 'Applications cross-platform depuis une seule base de code', en: 'Cross-platform apps from a single codebase' },
-      { fr: 'Expérience mobile fluide et performante', en: 'Native-feeling performance and animations' },
-      { fr: 'Itération rapide de l’UI avec hot reload', en: 'Rapid UI iteration with hot reload' },
-      { fr: 'Expérience cohérente sur iOS et Android', en: 'Consistent experience across iOS and Android' }
+      { fr: 'Notifications push via Firebase Cloud Messaging (FCM)', en: 'Push notifications through Firebase Cloud Messaging (FCM)' },
+      { fr: '98 % de délivrabilité des notifications', en: '98% notification delivery rate' },
+      { fr: 'Crash reporting avec Crashlytics', en: 'Crash reporting with Crashlytics' },
+      { fr: '99,8 % de sessions sans crash suivies en production', en: '99.8% crash-free sessions tracked in production' }
     ]
   },
-  Kafka: {
-    color: '#231F20',
+  GitLab: {
+    color: '#FC6D26',
     points: [
-      { fr: 'Streaming d’événements à haut débit', en: 'High-throughput event streaming' },
-      { fr: 'Architecture orientée messages découplée', en: 'Decoupled, message-driven architecture' },
-      { fr: 'Pipelines de données tolérants aux pannes', en: 'Fault-tolerant data pipelines' },
-      { fr: 'Traitement temps réel entre services', en: 'Real-time processing between services' }
+      { fr: 'Pipelines CI/CD pour les applications mobiles', en: 'CI/CD pipelines for mobile apps' },
+      { fr: 'Tests automatisés à chaque commit (Jest, Detox)', en: 'Automated tests on every commit (Jest, Detox)' },
+      { fr: 'Releases Android et iOS automatisées avec Fastlane', en: 'Automated Android and iOS releases with Fastlane' },
+      { fr: 'Revues de code et livraisons reproductibles', en: 'Code reviews and repeatable deliveries' }
     ]
   },
   Git: {
     color: '#F05032',
     points: [
       { fr: 'Contrôle de version sur chaque projet', en: 'Version control for every project' },
-      { fr: 'Workflows de branches pour collaborer sereinement', en: 'Branching workflows for safe collaboration' },
+      { fr: 'Revues de code pour garder une qualité constante', en: 'Code reviews to keep quality consistent' },
       { fr: 'Historique clair et changements traçables', en: 'Clear history and traceable changes' },
-      { fr: 'Base de la CI/CD et de la revue de code', en: 'Foundation for CI/CD and code review' }
+      { fr: 'Base de la CI/CD et du travail en sprints Agile', en: 'Foundation for CI/CD and Agile sprint work' }
     ]
   }
 };

@@ -2,54 +2,35 @@ import { ExperienceItem } from '../shared/models/portfolio.models';
 
 export const EXPERIENCE: ExperienceItem[] = [
   {
-    period: 'Jan. 2026 — Jul. 2026',
-    role: { fr: 'Développeur logiciel junior', en: 'Software Developer Junior' },
-    company: { fr: 'ZettaByte — 100 % à distance', en: 'ZettaByte — 100% Remote' },
+    period: 'Jan. 2026 — Sep. 2026',
+    role: { fr: 'Développeur Backend & Mobile', en: 'Backend & Mobile Developer' },
+    company: { fr: 'Zettabyte — À distance', en: 'Zettabyte — Remote' },
     desc: {
-      fr: 'Développeur logiciel junior sur des applications Java et Spring Boot, avec des contributions aux interfaces Angular et des travaux sur MongoDB dans un environnement 100 % à distance.',
-      en: 'Worked as a junior software developer on Java and Spring Boot applications, contributing to Angular interfaces and working with MongoDB in a fully remote environment.'
+      fr: 'Développement d’une application React Native (Android, iOS, web) pour les alarmes, les événements et le ticketing, avec des API REST sécurisées (OAuth2/JWT), du temps réel et des notifications push (WebSockets, FCM, APNs), un mode hors-ligne avec synchronisation SQLite, ainsi qu’un service live en Go, des API Spring Boot et un modèle Python d’IA côté backend.',
+      en: 'Built a React Native app (Android, iOS, web) for alarms, events and ticketing, with secure REST APIs (OAuth2/JWT), real-time updates and push notifications (WebSockets, FCM, APNs), an offline mode with SQLite synchronization, plus a live Go service, Spring Boot APIs and a Python AI model on the backend.'
     },
-    tech: ['Java 21', 'Spring Boot 3.x', 'Angular 21', 'MongoDB']
+    tech: ['React Native', 'Go', 'Spring Boot', 'Python', 'SQLite', 'GitLab CI/CD']
   },
 
   {
-    period: 'Jun. 2025 — Nov. 2025',
-    role: { fr: 'Développeur fullstack & mobile junior', en: 'Fullstack & Mobile Developer Junior' },
+    period: 'Jun. 2025 — Dec. 2025',
+    role: { fr: 'Développeur junior (stage)', en: 'Junior Developer (Internship)' },
     company: { fr: 'CNaPS Madagascar — Antananarivo', en: 'CNaPS Madagascar — Antananarivo' },
     desc: {
-      fr: 'Développement et maintenance d’applications Java et Spring, création d’interfaces Angular 12 et contributions à des applications mobiles avec Ionic, le tout avec Oracle 11g et JUnit.',
-      en: 'Developed and maintained Java and Spring applications, built Angular 12 interfaces and contributed to mobile applications with Ionic while working with Oracle 11g and JUnit.'
+      fr: 'Développement d’écrans Android en Kotlin à partir de maquettes Figma, écriture de tests unitaires et correction des bugs signalés par le QA, au sein d’une équipe en sprints Agile avec revues de code sur Git.',
+      en: 'Developed Android screens in Kotlin from Figma mockups, wrote unit tests and fixed bugs reported by QA, within an Agile sprint team with code reviews on Git.'
     },
-    tech: [
-      'Java 8/11',
-      'Spring Framework',
-      'Angular 12',
-      'Ionic',
-      'Oracle 11g',
-      'JUnit 5',
-      'Git',
-      'Maven'
-    ]
+    tech: ['Kotlin', 'Android', 'Figma', 'Unit tests', 'Git', 'Agile']
   },
 
   {
-    period: 'Aug. 2024 — May 2025',
-    role: { fr: 'Développeur logiciel junior', en: 'Software Developer Junior' },
+    period: 'Jul. 2024 — Aug. 2025',
+    role: { fr: 'Développeur Mobile', en: 'Mobile Developer' },
     company: { fr: 'Slite — Paris, France · À distance', en: 'Slite — Paris, France · Remote' },
     desc: {
-      fr: 'Travaux sur des applications Java et Spring Boot, contributions aux interfaces Angular et aux fonctionnalités mobiles avec Ionic, et mise en œuvre de PostgreSQL, Redis, Docker, Kubernetes et Grafana en environnement distribué.',
-      en: 'Worked on Java and Spring Boot applications, contributed to Angular interfaces and mobile features with Ionic, and worked with PostgreSQL, Redis, Docker, Kubernetes and Grafana in a remote environment.'
+      fr: 'Réalisation de 4 applications en Flutter et Android natif (Kotlin), de la maquette à la publication, en collaboration avec l’UI/UX, le backend et le QA en sprints Agile, avec des revues de code sur Git et la correction des problèmes de performance et de crash grâce au profiling et au crash reporting.',
+      en: 'Built 4 apps in Flutter and native Android (Kotlin), from mockup to store release, collaborating with UI/UX, backend and QA in Agile sprints, with code reviews on Git and fixes for performance issues and crashes using profiling and crash reporting.'
     },
-    tech: [
-      'Java 17',
-      'Spring Boot 3.x',
-      'Angular 21',
-      'Ionic',
-      'PostgreSQL',
-      'Redis',
-      'Docker',
-      'Kubernetes',
-      'Grafana'
-    ]
+    tech: ['Flutter', 'Kotlin', 'Android', 'Crashlytics', 'Git', 'Agile/Scrum']
   }
 ];

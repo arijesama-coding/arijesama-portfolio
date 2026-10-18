@@ -1,10 +1,10 @@
 import { ServiceItem } from '../shared/models/portfolio.models';
 
 export const SERVICES: ServiceItem[] = [
-  { title: 'Web Development', desc: 'Full-stack applications built from architecture to interface.' },
-  { title: 'Mobile Development', desc: 'Cross-platform apps engineered for performance and feel.' },
-  { title: 'API & Backend', desc: 'Scalable services, data architecture and system integration.' },
-  { title: 'UI / UX Implementation', desc: 'Turning designs into precise, production-grade interfaces.' },
-  { title: 'Performance', desc: 'Auditing and optimizing systems for speed and reliability.' },
-  { title: 'Technical Consulting', desc: 'Architecture reviews and technical strategy for growing teams.' }
+  { title: 'Mobile Development', desc: 'Cross-platform React Native and Flutter apps, plus native Android and iOS, built for performance.' },
+  { title: 'Real-Time & Push', desc: 'WebSockets, push notifications (FCM, APNs) and live data for critical alerts.' },
+  { title: 'Offline & Sync', desc: 'Offline-first mobile experiences with reliable SQLite data synchronization.' },
+  { title: 'API & Backend', desc: 'Secure REST APIs and live services with Go, Java Spring Boot and Python.' },
+  { title: 'Quality & Testing', desc: 'Automated testing (Jest, Detox), profiling and crash reporting for stable apps.' },
+  { title: 'Mobile CI/CD', desc: 'GitLab CI, GitHub Actions and Fastlane for fast, repeatable store releases.' }
 ];

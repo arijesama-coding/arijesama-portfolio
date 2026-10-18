@@ -3,231 +3,113 @@ import { ProjectItem } from '../shared/models/portfolio.models';
 export const PROJECTS: ProjectItem[] = [
   {
     num: '01',
-    cat: { fr: 'Plateforme de gestion', en: 'Management Platform' },
-    title: 'JobFlow',
+    cat: { fr: 'Application mobile temps réel', en: 'Real-Time Mobile App' },
+    title: 'Real-Time Monitoring & Alarm App',
     desc: {
-      fr: 'Plateforme web conçue pour centraliser la gestion des chantiers, la planification, la coordination des équipes, les workflows et les activités opérationnelles.',
-      en: 'Web platform designed to centralize job management, scheduling, team coordination, workflows and operational activities.'
+      fr: 'Application mobile de supervision et d’alarmes en temps réel, construite avec React Native, un service live en Go et des API Spring Boot, pour alerter les équipes terrain sur les événements critiques.',
+      en: 'Real-time monitoring and alarm mobile app built with React Native, a live Go service and Spring Boot APIs, designed to alert field teams to critical events.'
     },
-    images: [
-      'assets/projects/jobflow-hero.png'
-    ],
+    images: [],
     role: [
       {
-        fr: 'Développement et maintenance des fonctionnalités centrales de la plateforme',
-        en: 'Developed and maintained core platform features'
+        fr: 'Développement de l’application React Native (Android, iOS, web) : alarmes, événements et ticketing',
+        en: 'Developed the React Native app (Android, iOS, web): alarms, events and ticketing'
       },
       {
-        fr: 'Création et amélioration des interfaces web et des parcours utilisateurs',
-        en: 'Built and improved web interfaces and user workflows'
+        fr: 'Création du service live en Go (WebSockets) pour les mises à jour en temps réel',
+        en: 'Built the live Go service (WebSockets) for real-time updates'
       },
       {
-        fr: 'Conception et intégration des services applicatifs et des API',
-        en: 'Designed and integrated application services and APIs'
+        fr: 'Intégration d’API REST sécurisées (OAuth2/JWT) et des notifications push FCM/APNs',
+        en: 'Integrated secure REST APIs (OAuth2/JWT) and FCM/APNs push notifications'
       },
       {
-        fr: 'Travaux sur la gestion des données et la fiabilité applicative',
-        en: 'Worked on data management and application reliability'
+        fr: 'Mise en place des tests Detox/Jest et des releases Fastlane via GitLab CI/CD',
+        en: 'Set up Detox/Jest tests and Fastlane releases through GitLab CI/CD'
       }
     ],
     impact: {
       objective: {
-        fr: 'Les équipes terrain géraient leurs chantiers via des tableurs et des échanges informels, ce qui rendait la planification difficile à suivre et créait des pertes d’information. JobFlow centralise ces activités dans une plateforme unique pour fiabiliser la coordination et la visibilité sur chaque chantier.',
-        en: 'Field teams were managing jobs through spreadsheets and informal exchanges, which made scheduling hard to track and caused information to get lost. JobFlow centralizes these activities into a single platform to make coordination and visibility over every job more reliable.'
+        fr: 'Les équipes terrain devaient être alertées sur les événements critiques sans perte de données, où qu’elles soient. L’application livre ces alertes en temps réel, de façon sécurisée et fiable.',
+        en: 'Field teams needed to be alerted to critical events with no data loss, wherever they are. The app delivers these alerts in real time, securely and reliably.'
       },
       features: [
         {
-          fr: 'Planification des chantiers avec vue calendrier et affectation des équipes',
-          en: 'Job scheduling with calendar view and team assignment'
+          fr: 'Alerte reçue en 3 secondes avec 98 % de délivrabilité des notifications push',
+          en: 'Alert received in 3 seconds with a 98% push notification delivery rate'
         },
         {
-          fr: 'Suivi en temps réel de l’avancement et des tâches opérationnelles',
-          en: 'Real-time tracking of progress and operational tasks'
+          fr: '10 000+ connexions simultanées avec une latence inférieure à 100 ms',
+          en: '10,000+ simultaneous connections with latency under 100 ms'
         },
         {
-          fr: 'Workflows configurables pour standardiser les processus métier',
-          en: 'Configurable workflows to standardize business processes'
+          fr: '99,8 % de sessions sans crash et fluidité à 60 fps',
+          en: '99.8% crash-free sessions and smooth 60 fps performance'
         },
         {
-          fr: 'Tableaux de bord pour piloter l’activité multi-chantiers',
-          en: 'Dashboards to manage activity across multiple jobs'
+          fr: 'API Spring Boot : 1 200 req/s avec un temps de réponse p95 inférieur à 120 ms',
+          en: 'Spring Boot API: 1,200 req/s with p95 response time under 120 ms'
         }
       ]
     },
     year: '2026',
     cta: '',
-    link: 'https://jobflow.com'
-  },
-
-  {
-    num: '02',
-    cat: { fr: 'Plateforme de gestion', en: 'Management Platform' },
-    title: 'Gestion CCL',
-    desc: {
-      fr: 'Plateforme de gestion développée pour le Complexe Culturel et de Loisirs Vontovorona, axée sur les processus métier, la gestion des données et les activités opérationnelles.',
-      en: 'Management platform developed for the Complexe Culturel et de Loisirs Vontovorona, focused on business workflows, data management and operational activities.'
-    },
-    images: [],
-    role: [
-      {
-        fr: 'Développement et maintenance des fonctionnalités métier principales',
-        en: 'Developed and maintained core business features'
-      },
-      {
-        fr: 'Création et amélioration des interfaces web',
-        en: 'Built and improved web interfaces'
-      },
-      {
-        fr: 'Conception et intégration des services applicatifs et des API',
-        en: 'Designed and integrated application services and APIs'
-      },
-      {
-        fr: 'Travaux sur la gestion des données, les tests et la fiabilité applicative',
-        en: 'Worked on data management, testing and application reliability'
-      }
-    ],
-    impact: {
-      objective: {
-        fr: 'Le complexe gérait ses réservations, ses activités et ses ressources via des processus manuels dispersés entre plusieurs services. La plateforme regroupe ces opérations pour simplifier le suivi quotidien et réduire les erreurs de coordination entre équipes.',
-        en: 'The venue managed bookings, activities and resources through manual processes spread across several departments. The platform brings these operations together to simplify daily follow-up and reduce coordination errors between teams.'
-      },
-      features: [
-        {
-          fr: 'Gestion centralisée des réservations et des ressources du complexe',
-          en: 'Centralized management of bookings and venue resources'
-        },
-        {
-          fr: 'Suivi des activités et des processus métier internes',
-          en: 'Tracking of activities and internal business processes'
-        },
-        {
-          fr: 'Gestion des données avec contrôles de cohérence et de fiabilité',
-          en: 'Data management with consistency and reliability checks'
-        },
-        {
-          fr: 'Interfaces dédiées aux différents rôles opérationnels',
-          en: 'Dedicated interfaces for different operational roles'
-        }
-      ]
-    },
-    year: '2025',
-    cta: '#',
     link: '#'
   },
 
   {
-    num: '03',
-    cat: { fr: 'Plateforme SaaS', en: 'SaaS Platform' },
-    title: 'InvoiceNinja',
+    num: '02',
+    cat: { fr: 'Application mobile hors-ligne & IA', en: 'Offline & AI Mobile App' },
+    title: 'Offline Field App',
     desc: {
-      fr: 'Plateforme métier SaaS centrée sur la facturation, les paiements, la gestion de projets, la gestion clients et les processus de facturation.',
-      en: 'SaaS business platform focused on invoicing, payments, project management, client management and billing workflows.'
+      fr: 'Application terrain React Native qui fonctionne sans réseau et traite en priorité les alertes importantes grâce à un modèle Python de scoring.',
+      en: 'React Native field app that works without a network and handles important alerts first, thanks to a Python scoring model.'
     },
-    images: [
-      'assets/projects/invoiceninja-hero.png'
-    ],
+    images: [],
     role: [
       {
-        fr: 'Développement et maintenance des fonctionnalités orientées métier',
-        en: 'Developed and maintained business-oriented platform features'
+        fr: 'Conception du mode hors-ligne avec synchronisation des données SQLite',
+        en: 'Designed the offline mode with SQLite data synchronization'
       },
       {
-        fr: 'Création et amélioration des interfaces web et des parcours utilisateurs',
-        en: 'Built and improved web interfaces and user workflows'
+        fr: 'Gestion soignée des états de chargement, d’erreur et de reprise',
+        en: 'Handled loading, error and recovery states with care'
       },
       {
-        fr: 'Travaux sur la facturation, les paiements et les processus métier',
-        en: 'Worked on billing, invoicing and business processes'
+        fr: 'Création d’un modèle Python de scoring pour prioriser les alertes',
+        en: 'Built a Python scoring model to prioritize alerts'
       },
       {
-        fr: 'Contribution à la fiabilité applicative et à la gestion des données',
-        en: 'Contributed to application reliability and data management'
+        fr: 'Optimisation du démarrage grâce au cache et au chargement différé',
+        en: 'Optimized startup with caching and lazy loading'
       }
     ],
     impact: {
       objective: {
-        fr: 'Les indépendants et petites entreprises avaient besoin d’un outil unique pour facturer leurs clients, suivre les paiements et gérer leurs projets sans jongler entre plusieurs logiciels. InvoiceNinja répond à ce besoin en réunissant facturation, paiements et gestion de projets dans une seule plateforme SaaS.',
-        en: 'Freelancers and small businesses needed a single tool to invoice clients, track payments and manage projects without juggling several separate tools. InvoiceNinja addresses this by bringing invoicing, payments and project management together in one SaaS platform.'
+        fr: 'Les équipes devaient continuer à travailler sans connexion et traiter en premier les alertes les plus importantes, sans être noyées par les fausses alertes.',
+        en: 'Teams had to keep working without a connection and handle the most important alerts first, without being flooded by false alerts.'
       },
       features: [
         {
-          fr: 'Création et envoi de factures et devis personnalisables',
-          en: 'Creation and delivery of customizable invoices and quotes'
+          fr: 'Fonctionnement hors-ligne avec synchronisation automatique au retour du réseau',
+          en: 'Offline operation with automatic synchronization when the network returns'
         },
         {
-          fr: 'Suivi des paiements et intégration de moyens de paiement en ligne',
-          en: 'Payment tracking and integration of online payment methods'
+          fr: 'Priorisation des alertes par un modèle Python de scoring',
+          en: 'Alert prioritization through a Python scoring model'
         },
         {
-          fr: 'Gestion de projets liée aux clients et à la facturation',
-          en: 'Project management linked to clients and billing'
+          fr: '-30 % de fausses alertes',
+          en: '-30% false alerts'
         },
         {
-          fr: 'Gestion clients avec historique et suivi des échanges',
-          en: 'Client management with history and interaction tracking'
+          fr: 'Note de 4,7/5 sur les stores et démarrage 45 % plus rapide',
+          en: '4.7/5 store rating and 45% faster startup'
         }
       ]
     },
     year: '2025',
     cta: '',
-    link: 'https://invoiceninja.com'
-  },
-
-  {
-    num: '04',
-    cat: { fr: 'Plateforme de signature électronique', en: 'E-Signature Platform' },
-    title: 'Documenso',
-    desc: {
-      fr: 'Plateforme de signature de documents centrée sur les signatures électroniques, les workflows documentaires, les modèles, les destinataires et les processus d’approbation numérique.',
-      en: 'Document signing platform focused on electronic signatures, document workflows, templates, recipients and digital approval processes.'
-    },
-    images: [
-      'assets/projects/documenso-hero.png'
-    ],
-    role: [
-      {
-        fr: 'Développement et maintenance des workflows documentaires',
-        en: 'Developed and maintained document workflow features'
-      },
-      {
-        fr: 'Création et amélioration des interfaces et de l’expérience de signature',
-        en: 'Built and improved user interfaces and signing experiences'
-      },
-      {
-        fr: 'Travaux sur la gestion documentaire et les processus métier',
-        en: 'Worked on document management and business processes'
-      },
-      {
-        fr: 'Contribution à la fiabilité applicative et à la gestion des données',
-        en: 'Contributed to application reliability and data management'
-      }
-    ],
-    impact: {
-      objective: {
-        fr: 'Faire signer et valider des documents papier ralentissait les processus d’approbation et compliquait le suivi des destinataires. Documenso digitalise l’ensemble du parcours de signature pour accélérer les approbations tout en gardant une traçabilité claire.',
-        en: 'Signing and validating paper documents slowed down approval processes and made tracking recipients difficult. Documenso digitizes the entire signing journey to speed up approvals while keeping clear traceability.'
-      },
-      features: [
-        {
-          fr: 'Signature électronique de documents avec gestion des destinataires',
-          en: 'Electronic document signing with recipient management'
-        },
-        {
-          fr: 'Modèles réutilisables pour accélérer la création de documents',
-          en: 'Reusable templates to speed up document creation'
-        },
-        {
-          fr: 'Workflows d’approbation avec suivi de statut en temps réel',
-          en: 'Approval workflows with real-time status tracking'
-        },
-        {
-          fr: 'Historique et traçabilité complète des signatures',
-          en: 'Full history and traceability of signatures'
-        }
-      ]
-    },
-    year: '2024',
-    cta: '',
-    link: 'https://documenso.com'
+    link: '#'
   }
 ];
